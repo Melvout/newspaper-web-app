@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "newspaper-web-app"
+    }
+  },
+  "defaultProject": "newspaper-web-app",
+  "cli": {
+    "analytics": "f0463274-b4fd-4a74-afeb-ca0bbcc4bb7e"
+  }
 }
