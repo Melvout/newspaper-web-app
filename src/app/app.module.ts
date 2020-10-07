@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticleDetailsComponent } from './components/article-details/article-details.component';
 import { ArticleEditionComponent } from './components/article-edition/article-edition.component';
+import { ArticleListComponent } from './components/article-list/article-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticleDetailsComponent,
-    ArticleEditionComponent
+    ArticleEditionComponent,
+    ArticleListComponent
   ],
   imports: [
     BrowserModule,
