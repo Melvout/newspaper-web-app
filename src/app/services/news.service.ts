@@ -9,7 +9,8 @@ import { LoginService } from './login.service';
 @Injectable({
   providedIn: 'root'
 })
-export class NewsService {
+export class NewsService 
+{
 
   private newsUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/articles';  // URL to web api
   private articleUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/article';  // URL to web api
@@ -20,7 +21,8 @@ export class NewsService {
   private APIKEY: string;
   private APIKEY_ANON = 'GROMANAPIKEY99';
 
-  private httpOptions = {
+  private httpOptions = 
+  {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'PUIRESTAUTH apikey=' + this.APIKEY_ANON
@@ -28,7 +30,8 @@ export class NewsService {
   };
 
   // Modifies the APIKEY with the received value
-  setUserApiKey(apikey: string) {
+  setUserApiKey(apikey: string) 
+  {
     this.APIKEY = apikey;
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -39,7 +42,8 @@ export class NewsService {
     console.log('Apikey successfully changed ' + this.APIKEY);
   }
 
-  setAnonymousApiKey() {
+  setAnonymousApiKey() 
+  {
     this.setUserApiKey(this.APIKEY_ANON);
   }
 
@@ -53,17 +57,17 @@ export class NewsService {
   //  "title":...,
   //  "thumbnail_image":...,
   //  "thumbnail_media_type":...}
-
-  getArticles(): Observable<Article[]> {
+  getArticles(): Observable<Article[]> 
+  {
     return this.http.get<Article[]>(this.newsUrl, this.httpOptions);
   }
 
-  deleteArticle(article: Article | number): Observable<Article> {
+  deleteArticle(article: Article | number): Observable<Article> 
+  {
     const id = typeof article === 'number' ? article : article.id;
     const url = `${this.articleUrl}/${id}`;
     return this.http.delete<Article>(url, this.httpOptions);
   }
-
 
   // Returns an article which contains the following elements:
   // {"id":...,
@@ -75,21 +79,22 @@ export class NewsService {
   //  "title":...,
   //  "image_data":...,
   //  "image_media_type":...}
-
-
-  getArticle(id: number): Observable<Article> {
+  getArticle(id: number): Observable<Article> 
+  {
     console.log('Requesting article id=' + id);
     const url = `${this.articleUrl}/${id}`;
     return this.http.get<Article>(url, this.httpOptions);
 
   }
 
-  updateArticle(article: Article): Observable<Article> {
+  updateArticle(article: Article): Observable<Article> 
+  {
     console.log('Updating article id=' + article.id);
     return this.http.post<Article>(this.articleUrl, article, this.httpOptions);
   }
 
-  createArticle(article: Article): Observable<Article> {
+  createArticle(article: Article): Observable<Article>
+  {
     console.log('Creating article');
     console.log(article);
     return this.http.post<Article>(this.articleUrl, article, this.httpOptions);

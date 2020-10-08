@@ -29,13 +29,15 @@ export class LoginService
     return this.user != null;
   }
 
-  login(name: string, pwd: string): Observable<User> {
+  login(name: string, pwd: string): Observable<User> 
+  {
     const usereq = new HttpParams()
       .set('username', name)
       .set('passwd', pwd);
 
     return this.http.post<User>(this.loginUrl, usereq).pipe(
-      tap(user => {
+      tap(user => 
+      {
         this.user = user;
       })
     );
@@ -52,8 +54,10 @@ export class LoginService
   }
 
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+  private handleError<T>(operation = 'operation', result?: T)
+  {
+    return (error: any): Observable<T> =>
+    {
       this.user = null;
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
