@@ -1,4 +1,9 @@
 export interface User 
 {
-    // TODO
+    authorization: string,
+    apikey: string,
+    expires: string,
+    group: number,
+    user: number,
+    username: string
 }

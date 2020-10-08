@@ -25,11 +25,16 @@ export class LoginService
 
   constructor(private http: HttpClient) { }
 
+  /* Function to know if the user is logged
+    If the user is logged : return true
+    Else : false
+    */
   isLogged() 
   {
     return this.user != null;
   }
 
+  /* Function to login as a user to add, edit or delete articles */
   login(name: string, pwd: string): Observable<User> 
   {
     const usereq = new HttpParams()
@@ -44,11 +49,13 @@ export class LoginService
     );
   }
 
+  /* Return the user */
   getUser() 
   {
     return this.user;
   }
 
+  /* Function to log out */
   logout()
   {
     this.user = null;

@@ -21,6 +21,7 @@ export class NewsService
   // Set the corresponding APIKEY accordig to the received by email
   private APIKEY: string;
   private APIKEY_ANON = 'GROMANAPIKEY99';
+  //private APIKEY_ANON = 'DEV_TEAM_13313';
 
   private httpOptions = 
   {
@@ -34,7 +35,8 @@ export class NewsService
   setUserApiKey(apikey: string) 
   {
     this.APIKEY = apikey;
-    this.httpOptions = {
+    this.httpOptions = 
+    {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'PUIRESTAUTH apikey=' + this.APIKEY
