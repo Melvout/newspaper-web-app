@@ -7,11 +7,3 @@ export interface Article extends Press
     image_description: string,
     image_media_type: string
 }
-  
-
-/*
-body
-image_data
-image_description
-image_media_type
-*/

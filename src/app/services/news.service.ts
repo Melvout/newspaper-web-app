@@ -48,16 +48,19 @@ export class NewsService
     this.setUserApiKey(this.APIKEY_ANON);
   }
 
-  // Returns the list of news contain elements with the following fields:
-  // {"id":...,
-  //  "id_user":...,
-  //  "abstract":...,
-  //  "subtitle":...,
-  //  "update_date":...,
-  //  "category":...,
-  //  "title":...,
-  //  "thumbnail_image":...,
-  //  "thumbnail_media_type":...}
+  /* Returns the list of news with the following fields:
+    id
+    id_user
+    is_public
+    is_deleted
+    abstract
+    subtitle
+    update_date
+    category
+    title
+    thumbnail_image
+    thumbnail_media_type */
+  /* Melvin : I changed to the return type from Observable<Article> to Observable<News> */
   getArticles(): Observable<News[]> 
   {
     return this.http.get<News[]>(this.newsUrl, this.httpOptions);
@@ -70,16 +73,21 @@ export class NewsService
     return this.http.delete<News>(url, this.httpOptions);
   }
 
-  // Returns an article which contains the following elements:
-  // {"id":...,
-  //  "id_user":...,
-  //  "abstract":...,
-  //  "subtitle":...,
-  //  "update_date":...,
-  //  "category":...,
-  //  "title":...,
-  //  "image_data":...,
-  //  "image_media_type":...}
+  /* Returns an article which contains the following elements:
+    id
+    id_user
+    is_public
+    is_deleted
+    abstract
+    subtitle
+    update_date
+    category
+    title
+    body
+    image_data
+    image_description
+    image_media_type
+  */
   getArticle(id: number): Observable<Article> 
   {
     console.log('Requesting article id=' + id);

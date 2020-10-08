@@ -10,17 +10,3 @@ export interface Press
     category: string,
     title: string
 }
-
-
-/*
-*id*
-*id_user*
-*is_public*
-*is_deleted*
-*abstract*
-*subtitle*
-*update_date*
-*category*
-*title*
-*is_deleted*
-*/
