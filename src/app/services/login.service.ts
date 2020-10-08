@@ -17,7 +17,8 @@ export class LoginService
 
   private message: string;
 
-  private httpOptions = {
+  private httpOptions =
+  {
     headers: new HttpHeaders()
       .set('Content-Type', 'x-www-form-urlencoded')
   };

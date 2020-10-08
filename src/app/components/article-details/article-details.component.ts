@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsService } from '../../services/news.service';
+import { Article } from 'src/app/interfaces/article';
 
 @Component({
   selector: 'app-article-details',
@@ -8,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 export class ArticleDetailsComponent implements OnInit
 {
 
-  constructor() { }
+  article: Article;
 
-  ngOnInit(): void {
+  constructor(private newsService: NewsService){ }
+
+  ngOnInit(): void
+  {
+    this.getArticle(1);
   }
 
+  getArticle(id: number)
+  {
+    this.newsService.getArticle(id).subscribe(article => 
+    {
+      this.article = article;
+    },
+    err =>
+    {
+      console.log("An error has ocurred : " + err.statusText); // CHANGES NEEDED
+    },
+    () =>
+    {
+      console.log("Article got !"); // CHANGES NEEDED
+    });
+  }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Article } from '../interfaces/article';
+import { News } from '../interfaces/news';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -57,16 +58,16 @@ export class NewsService
   //  "title":...,
   //  "thumbnail_image":...,
   //  "thumbnail_media_type":...}
-  getArticles(): Observable<Article[]> 
+  getArticles(): Observable<News[]> 
   {
-    return this.http.get<Article[]>(this.newsUrl, this.httpOptions);
+    return this.http.get<News[]>(this.newsUrl, this.httpOptions);
   }
 
-  deleteArticle(article: Article | number): Observable<Article> 
+  deleteArticle(article: News | number): Observable<News> 
   {
     const id = typeof article === 'number' ? article : article.id;
     const url = `${this.articleUrl}/${id}`;
-    return this.http.delete<Article>(url, this.httpOptions);
+    return this.http.delete<News>(url, this.httpOptions);
   }
 
   // Returns an article which contains the following elements:

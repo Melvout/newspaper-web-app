@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsService } from '../../services/news.service';
+import { News } from '../../interfaces/news';
 
 @Component({
   selector: 'app-article-list',
@@ -8,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 export class ArticleListComponent implements OnInit 
 {
 
-  constructor() { }
+  newsList: Array<News> = [];
 
-  ngOnInit(): void {
+  constructor(private newsService: NewsService){ }
+
+  ngOnInit(): void 
+  {
+    this.getArticles();    
+  }
+
+  getArticles()
+  {
+    this.newsService.getArticles().subscribe(list => 
+    {
+      this.newsList = list;
+    },
+    err =>
+    {
+      console.log("An error has ocurred : " + err.statusText); // CHANGES NEEDED
+    },
+    () =>
+    {
+      console.log("News list got"); // CHANGES NEEDED
+    });
   }
 
 }
