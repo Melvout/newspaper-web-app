@@ -1,1 +1,21 @@
-<button class="btn btn-secondary" (click)="login('us_1_3','1331')">LOGIN</button>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+
+    <div>
+      <label for="username">
+        Username
+      </label>
+      <input id="username" type="text" formControlName="username">
+    </div>
+  
+    <div>
+      <label for="password">
+        Address
+      </label>
+      <input id="password" type="text" formControlName="password">
+    </div>
+  
+    <button class="button" type="submit">Login</button>
+  
+  </form>
+
+  <div *ngIf="isLogged()">User logged</div>

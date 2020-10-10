@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { LoginService } from '../../services/login.service'
+
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-login',
@@ -11,8 +15,17 @@ export class LoginComponent implements OnInit
 {
 
   user: User;
-  
-  constructor(private loginService: LoginService){ }
+  loginForm: FormGroup;
+
+  constructor(private loginService: LoginService, private formBuilder: FormBuilder)
+  {
+    this.loginForm = this.formBuilder.group(
+    {
+        username: '',
+        password: ''
+    });
+  }
+
 
   ngOnInit(): void
   {
@@ -42,5 +55,19 @@ export class LoginComponent implements OnInit
   {
     this.loginService.logout();
     this.user = this.loginService.getUser();
+  }
+
+  /* Function to know if the user is logged
+    If the user is logged : return true
+    Else : false
+    */
+  isLogged(): boolean
+  {
+    return this.loginService.isLogged();
+  }
+
+  onSubmit(userData: { username: string; password: string; })
+  {
+    this.login(userData.username, userData.password);
   }
 }

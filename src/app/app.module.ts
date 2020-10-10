@@ -10,6 +10,8 @@ import { ArticleEditionComponent } from './components/article-edition/article-ed
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,9 @@ import { LoginComponent } from './components/login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -29,7 +29,7 @@ export class LoginService
     If the user is logged : return true
     Else : false
     */
-  isLogged() 
+  isLogged(): boolean
   {
     return this.user != null;
   }
