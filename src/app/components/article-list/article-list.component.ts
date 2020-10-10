@@ -19,7 +19,8 @@ export class ArticleListComponent implements OnInit
     this.getArticles();    
   }
 
-  getArticles()
+  /* Function to initialize the lists of all the articles from the API */
+  getArticles(): void
   {
     this.newsService.getArticles().subscribe(list => 
     {
@@ -27,7 +28,8 @@ export class ArticleListComponent implements OnInit
     },
     err =>
     {
-      console.log("An error has ocurred : " + err.statusText); // CHANGES NEEDED
+      this.newsList = null;
+      console.log("An error has ocurred : " + err);
     },
     () =>
     {
