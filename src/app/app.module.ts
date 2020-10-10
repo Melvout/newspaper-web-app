@@ -11,6 +11,7 @@ import { ArticleListComponent } from './components/article-list/article-list.com
 import { LoginComponent } from './components/login/login.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ArticleDetailsComponent,
     ArticleEditionComponent,
     ArticleListComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
