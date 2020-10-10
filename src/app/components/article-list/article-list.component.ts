@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { News } from '../../interfaces/news';
+import { LoginService } from '../../services/login.service'
 
 @Component({
   selector: 'app-article-list',
@@ -12,7 +13,7 @@ export class ArticleListComponent implements OnInit
 
   newsList: Array<News> = []; // fields : id, id_user, is_public, is_deleted, abstract, subtitle, update_date, category, title, thumbnail_image, thumbnail_image_type
 
-  constructor(private newsService: NewsService){ }
+  constructor(private newsService: NewsService, private loginService: LoginService){ }
 
   ngOnInit(): void 
   {
@@ -35,6 +36,15 @@ export class ArticleListComponent implements OnInit
     {
       console.log("News list got"); // CHANGES NEEDED
     });
+  }
+
+  /* Function to know if the user is logged
+    If the user is logged : return true
+    Else : false
+  */
+  isLogged(): boolean
+  {
+    return this.loginService.isLogged();
   }
 
 }
