@@ -10,7 +10,7 @@ import { News } from '../../interfaces/news';
 export class ArticleListComponent implements OnInit 
 {
 
-  newsList: Array<News> = [];
+  newsList: Array<News> = []; // fields : id, id_user, is_public, is_deleted, abstract, subtitle, update_date, category, title, thumbnail_image, thumbnail_image_type
 
   constructor(private newsService: NewsService){ }
 
