@@ -38,13 +38,6 @@ export class ArticleEditionComponent implements OnInit
     }) 
   }
 
-
-
-  setUserApiKey()
-  {
-    this.newsService.setUserApiKey(this.loginService.getUser().apikey);
-  }
-
   /* Function to know if the user is logged
     If the user is logged : return true
     Else : false
