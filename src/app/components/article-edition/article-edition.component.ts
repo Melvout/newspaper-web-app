@@ -5,6 +5,7 @@ import { NewsService } from '../../services/news.service';
 
 import { Article } from '../../interfaces/article';
 
+
 @Component({
   selector: 'app-article-edition',
   templateUrl: './article-edition.component.html',
@@ -35,6 +36,26 @@ export class ArticleEditionComponent implements OnInit
     {
       console.log("Article created");
     }) 
+  }
+
+
+
+  updateArticle(): void
+  {
+    let articleToUpdate: Article = {is_public: true, is_deleted: false, abstract: "another blabla", subtitle: "cool",update_date:"11/10/2020", category: "National", title: "TITLE", body: "Hello,....", image_data: "BLABLA", image_description: "bla", image_media_type: "jpeg" }
+    this.newsService.updateArticle(articleToUpdate).subscribe( elem =>
+    {
+      elem.abstract = "NEW ABSTRACT HAHA";
+      console.log(elem);
+    },
+    err =>
+    {
+      console.log("An error has occured : " + err);
+    },
+    () =>
+    {
+      console.log("Article updated");
+    })
   }
 
   /* Function to know if the user is logged

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
-import { News } from '../../interfaces/news';
+
 import { ThrowStmt } from '@angular/compiler';
 
 import { LoginService } from '../../services/login.service'
@@ -14,7 +14,7 @@ import { Article } from '../../interfaces/article';
 export class ArticleListComponent implements OnInit 
 {
 
-  newsList: Array<News> = []; // fields : id, id_user, is_public, is_deleted, abstract, subtitle, update_date, category, title, thumbnail_image, thumbnail_image_type
+  newsList: Array<Article> = []; // fields : id, id_user, is_public, is_deleted, abstract, subtitle, update_date, category, title, thumbnail_image, thumbnail_image_type
 
   constructor(private newsService: NewsService, private loginService: LoginService){ }
 
@@ -68,4 +68,26 @@ export class ArticleListComponent implements OnInit
       this.getArticles();
     });
   }
+
+
+  updateArticle(): void
+  {
+    let articleToUpdate: Article = this.newsList[0];
+    articleToUpdate.abstract = "NEW ABSTRACT !!!!";
+
+    this.newsService.updateArticle(articleToUpdate).subscribe( elem =>
+    {
+      console.log(elem);
+    },
+    err =>
+    {
+      console.log("An error has occured : " + err);
+    },
+    () =>
+    {
+      console.log("Article updated");
+      this.getArticles();
+    })
+  }
+
 }
