@@ -7,6 +7,7 @@
   --orangeRed: #FF6B68;
   --intenseBlue: #1A67E3;
   --backgroundGray: #F2F2F2;
+  --secondaryGray: #707375;
 }
 
 /* Updates font family & Sizing */
@@ -51,8 +52,12 @@ h1, h2, h3, h4, .navbar-brand {
 }
 
 p {
-  /* font-weight: 300; */
   line-height: 1.6;
+}
+
+/* Text Styles */
+.secondary-text {
+  color: var(--secondaryGray);
 }
 
 .body-lg {
@@ -111,6 +116,21 @@ p {
 
 .margin-bottom-md {
   margin-bottom: 4.209rem
+}
+
+.margin-bottom-sm {
+  margin-bottom: 2.3529rem;
+}
+
+.light-background {
+  background-color: var(--intenseBlue);
+}
+
+.dark-background {
+  background-color: var(--black);
+}
+.stripe {
+  height: 0.4117rem;
 }
 
 /* Forms */
