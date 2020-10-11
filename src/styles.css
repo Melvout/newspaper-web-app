@@ -1,1 +1,152 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Color variables */
+:root {
+  --black: #010405;
+  --darkBlue: #04284A;
+  --orangeRed: #FF6B68;
+  --intenseBlue: #1A67E3;
+  --backgroundGray: #F2F2F2;
+  --secondaryGray: #707375;
+}
+
+/* Updates font family & Sizing */
+html, body {
+  font-size: 17px;
+  font-family: 'Inter', sans-serif;
+  color: var(--black);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--backgroundGray);
+}
+
+h1 {
+  font-size: 3.157rem;
+  line-height: 1.25;
+  letter-spacing: -0.03rem;
+  padding-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2.369rem;
+}
+
+h3 {
+  font-size: 1.777rem;
+  padding-bottom: 2rem;
+}
+
+h4 {
+  font-size: 1.333rem;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin-bottom: 0;
+}
+
+h1, h2, h3, h4, .navbar-brand {
+  font-weight: 900;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Text Styles */
+.secondary-text {
+  color: var(--secondaryGray);
+}
+
+.body-lg {
+  font-size: 1.2352rem;
+  line-height: 1.6;
+  padding-bottom: 2rem;
+
+}
+
+/* Navigation styles */
+.navbar-brand {
+  font-size: 1.333rem;
+  text-transform: uppercase;
+}
+.nav-item, .btn-sm {
+  font-size: 0.7058rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link {
+  color: var(--orangeRed);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255,255,255,1);
+}
+
+.bg-dark {
+  background-color: var(--darkBlue)!important;
+}
+
+/* Button styles */
+.btn {
+  text-transform: uppercase;
+  border-radius: 0.7647rem;
+  font-weight: 700;
+  padding: 0.7647rem 2rem;
+}
+
+.btn-sm {
+  border-radius: 0.4117rem;
+  padding: 0.3017rem 0.7647rem;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: var(--intenseBlue);
+  border-color: var(--intenseBlue);
+}
+
+/* Layout */
+.margin-top-lg {
+  margin-top: 5.5294rem;
+}
+
+.margin-bottom-md {
+  margin-bottom: 4.209rem
+}
+
+.margin-bottom-sm {
+  margin-bottom: 2.3529rem;
+}
+
+.light-background {
+  background-color: var(--intenseBlue);
+}
+
+.dark-background {
+  background-color: var(--black);
+}
+.stripe {
+  height: 0.4117rem;
+}
+
+/* Forms */
+label {
+  font-size: 0.8235rem;
+  line-height: 1.5;
+  font-weight: 600;
+  padding-bottom: 0.70588rem;
+  margin-bottom: 0;
+}
+.form-control {
+  padding: 1.5294rem 0.8823rem;
+  border-radius: 0.29411rem;
+  border: 1px solid #707375;
+  margin-bottom: 1.8rem;
+}
+
+
+

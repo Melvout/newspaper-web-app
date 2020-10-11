@@ -1,21 +1,24 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+<div class="container">
+  <div class="row margin-top-lg"></div>
+    <h3 class="text-center">Sign in to your account</h3>
+    <div class="col-xl-5 col-lg-6 mx-auto login-form">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input id="username" type="text" formControlName="username" class="form-control" placeholder="Your Username">
+        </div>
 
-    <div>
-      <label for="username">
-        Username
-      </label>
-      <input id="username" type="text" formControlName="username">
-    </div>
-  
-    <div>
-      <label for="password">
-        Address
-      </label>
-      <input id="password" type="text" formControlName="password">
-    </div>
-  
-    <button class="button" type="submit">Login</button>
-  
-  </form>
+        <div class="form-group">
+          <label for="password">
+            Address
+          </label>
+          <input id="password" type="text" formControlName="password" class="form-control" placeholder="Your password">
+        </div>
 
-  <div *ngIf="isLogged()">User logged</div>
+        <button class="button" type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+  </div>
+</div>
+
+
+<div *ngIf="isLogged()">User logged</div>
