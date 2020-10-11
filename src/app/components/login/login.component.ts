@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { LoginService } from '../../services/login.service'
+import { NewsService } from '../../services/news.service';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit
   user: User;
   loginForm: FormGroup;
 
-  constructor(private loginService: LoginService, private formBuilder: FormBuilder)
+  constructor(private loginService: LoginService, private formBuilder: FormBuilder, private newsService: NewsService)
   {
     this.loginForm = this.formBuilder.group(
     {
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit
     this.loginService.login(name, pwd).subscribe( user => 
     {
       this.user = user;
-      console.log(user);
+      
     },
     err =>
     {
@@ -47,6 +48,8 @@ export class LoginComponent implements OnInit
     () =>
     {
       console.log("User logged"); // CHANGES NEEDED
+      //console.log(this.user);
+      this.newsService.setUserApiKey(this.loginService.getUser().apikey); // Set the apikey for the current user
     });
   }
 
@@ -55,6 +58,8 @@ export class LoginComponent implements OnInit
   {
     this.loginService.logout();
     this.user = this.loginService.getUser();
+    this.newsService.setAnonymousApiKey(); // Restoring anonymous apikey
+
   }
 
   /* Function to know if the user is logged
@@ -69,5 +74,6 @@ export class LoginComponent implements OnInit
   onSubmit(userData: { username: string; password: string; })
   {
     this.login(userData.username, userData.password);
+   
   }
 }
