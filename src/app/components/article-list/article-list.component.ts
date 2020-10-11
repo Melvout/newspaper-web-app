@@ -68,26 +68,4 @@ export class ArticleListComponent implements OnInit
       this.getArticles();
     });
   }
-
-
-  updateArticle(): void
-  {
-    let articleToUpdate: Article = this.newsList[0];
-    articleToUpdate.abstract = "NEW ABSTRACT !!!!";
-
-    this.newsService.updateArticle(articleToUpdate).subscribe( elem =>
-    {
-      console.log(elem);
-    },
-    err =>
-    {
-      console.log("An error has occured : " + err);
-    },
-    () =>
-    {
-      console.log("Article updated");
-      this.getArticles();
-    })
-  }
-
 }

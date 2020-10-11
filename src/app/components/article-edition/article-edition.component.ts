@@ -14,16 +14,17 @@ import { Article } from '../../interfaces/article';
 export class ArticleEditionComponent implements OnInit
 {
 
+  newsList: Array<Article> = [];
+
   constructor(private loginService: LoginService, private newsService: NewsService) { }
 
   ngOnInit(): void {
   }
 
-  /* Method to POST a new article to the API */
+  /* Method to POST a new article to the API
+    The article given in parameter must not have an ID in his fields */
   createArticle(articleToCreate: Article): void
-  {
-    //let articleToCreate: Article = {id: 1, id_user:80, is_public: true, is_deleted: false, abstract: "blabla", subtitle: "sous-titre",update_date:"11/10/2020", category: "National", title: "TITLE", body: "Hello,....", image_data: "BLABLA", image_description: "bla", image_media_type: "jpeg" };
-    
+  {    
     this.newsService.createArticle(articleToCreate).subscribe( elem =>
     {
       console.log(elem);
@@ -38,14 +39,12 @@ export class ArticleEditionComponent implements OnInit
     }) 
   }
 
-
-
-  updateArticle(): void
+  /* Method to update an article
+    The paramater article must have an existing ID in his fields */
+  updateArticle(articleToUpdate: Article): void
   {
-    let articleToUpdate: Article = {is_public: true, is_deleted: false, abstract: "another blabla", subtitle: "cool",update_date:"11/10/2020", category: "National", title: "TITLE", body: "Hello,....", image_data: "BLABLA", image_description: "bla", image_media_type: "jpeg" }
     this.newsService.updateArticle(articleToUpdate).subscribe( elem =>
     {
-      elem.abstract = "NEW ABSTRACT HAHA";
       console.log(elem);
     },
     err =>
@@ -55,7 +54,28 @@ export class ArticleEditionComponent implements OnInit
     () =>
     {
       console.log("Article updated");
+      this.getArticles();
     })
+  }
+
+
+  /* Function to initialize the lists of all the articles from the API */
+  getArticles(): void
+  {
+    this.newsService.getArticles().subscribe(list => 
+    {
+      this.newsList = list;
+    },
+    err =>
+    {
+      this.newsList = null;
+      console.log("An error has ocurred : " + err);
+    },
+    () =>
+    {
+      console.log("News list got"); // CHANGES NEEDED
+      console.log(this.newsList);
+    });
   }
 
   /* Function to know if the user is logged
