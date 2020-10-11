@@ -61,7 +61,6 @@ export class NewsService
     title
     thumbnail_image
     thumbnail_media_type */
-  /* Melvin : I changed to the return type from Observable<Article> to Observable<News> */
   getArticles(): Observable<Article[]> 
   {
     return this.http.get<Article[]>(this.newsUrl, this.httpOptions);
