@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit
     });
   }
 
-
   ngOnInit(): void
   {
 
@@ -48,7 +47,7 @@ export class LoginComponent implements OnInit
     () =>
     {
       console.log("User logged"); // CHANGES NEEDED
-      //console.log(this.user);
+      console.log(this.user);
       this.newsService.setUserApiKey(this.loginService.getUser().apikey); // Set the apikey for the current user
     });
   }
@@ -74,6 +73,5 @@ export class LoginComponent implements OnInit
   onSubmit(userData: { username: string; password: string; })
   {
     this.login(userData.username, userData.password);
-   
   }
 }
