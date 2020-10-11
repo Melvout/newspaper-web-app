@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { News } from '../../interfaces/news';
-import { LoginService } from '../../services/login.service'
 import { ThrowStmt } from '@angular/compiler';
+
+import { LoginService } from '../../services/login.service'
+import { Article } from '../../interfaces/article';
 
 @Component({
   selector: 'app-article-list',
@@ -66,5 +68,4 @@ export class ArticleListComponent implements OnInit
       this.getArticles();
     });
   }
-
 }
