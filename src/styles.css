@@ -109,11 +109,15 @@ p {
   margin-top: 5.5294rem;
 }
 
+.margin-bottom-md {
+  margin-bottom: 4.209rem
+}
+
 /* Forms */
 label {
   font-size: 0.8235rem;
   line-height: 1.5;
-  font-weight: 500;
+  font-weight: 600;
   padding-bottom: 0.70588rem;
   margin-bottom: 0;
 }
