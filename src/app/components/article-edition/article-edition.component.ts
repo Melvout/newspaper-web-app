@@ -18,8 +18,8 @@ export class ArticleEditionComponent implements OnInit
   ngOnInit(): void {
   }
 
-  /* Method to test the creation of article, changes needed */
-  createTest(articleToCreate: Article): void
+  /* Method to POST a new article to the API */
+  createArticle(articleToCreate: Article): void
   {
     //let articleToCreate: Article = {id: 1, id_user:80, is_public: true, is_deleted: false, abstract: "blabla", subtitle: "sous-titre",update_date:"11/10/2020", category: "National", title: "TITLE", body: "Hello,....", image_data: "BLABLA", image_description: "bla", image_media_type: "jpeg" };
     
