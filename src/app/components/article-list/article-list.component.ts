@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { News } from '../../interfaces/news';
 import { LoginService } from '../../services/login.service'
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-article-list',
@@ -35,7 +36,7 @@ export class ArticleListComponent implements OnInit
     () =>
     {
       console.log("News list got"); // CHANGES NEEDED
-      //console.log(this.newsList);
+      console.log(this.newsList);
     });
   }
 
@@ -46,6 +47,24 @@ export class ArticleListComponent implements OnInit
   isLogged(): boolean
   {
     return this.loginService.isLogged();
+  }
+
+  /* Function to delete an article using his id in the newsList */
+  deleteArticle(articleID: number)
+  {
+    this.newsService.deleteArticle(this.newsList[articleID]).subscribe( elem =>
+    {
+      console.log(elem);
+    },
+    err =>
+    {
+      console.log("An error has ocurred : " + err);
+    },
+    () =>
+    {
+      console.log("Article deleted");
+      this.getArticles();
+    });
   }
 
 }
