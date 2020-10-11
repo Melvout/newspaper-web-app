@@ -3,15 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { CommonModule } from '@angular/common'; 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticleDetailsComponent } from './components/article-details/article-details.component';
 import { ArticleEditionComponent } from './components/article-edition/article-edition.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NavbarComponent } from './components/navbar/navbar.component';
+
 
 @NgModule({
   declarations: [
@@ -19,15 +22,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ArticleDetailsComponent,
     ArticleEditionComponent,
     ArticleListComponent,
-    LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

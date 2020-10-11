@@ -4,6 +4,10 @@ import { Article } from 'src/app/interfaces/article';
 
 import { LoginService } from '../../services/login.service'
 
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
+
+
 @Component({
   selector: 'app-article-details',
   templateUrl: './article-details.component.html',
@@ -11,14 +15,19 @@ import { LoginService } from '../../services/login.service'
 })
 export class ArticleDetailsComponent implements OnInit
 {
-
+  articleId: number;
   article: Article;
 
-  constructor(private newsService: NewsService, private loginService: LoginService){ }
+  constructor(private newsService: NewsService, private loginService: LoginService, private location: Location, private route: ActivatedRoute){ }
 
   ngOnInit(): void
   {
-    this.getArticle(1);
+    this.route.paramMap.subscribe(params =>
+    {
+      this.articleId = parseInt(params.get('id'), 10);
+      this.getArticle(this.articleId);
+      console.log(this.articleId);
+    });
   }
 
   getArticle(id: number)
@@ -30,6 +39,7 @@ export class ArticleDetailsComponent implements OnInit
     err =>
     {
       console.log("An error has ocurred : " + err.statusText); // CHANGES NEEDED
+      this.article = null;
     },
     () =>
     {
