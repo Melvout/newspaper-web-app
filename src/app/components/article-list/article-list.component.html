@@ -3,8 +3,8 @@
 <div class="content" fxLayout="row wrap" fxLayoutGap="1rem grid">
   <div fxFlex="33%"
         fxFlex.xs="100%"
-        fxFlex.sm="100%"
-        fxFlex.fxFlex.md="50%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
         *ngFor="let news of newsList; index as i">
     <div class="card">
       <a (click)="viewArticle(i)" role="button">
