@@ -165,7 +165,7 @@ label {
 
 /* Cards */
 .content {
-    padding: 16px;
+    padding: 5.5294rem 0;
 }
 
 .card:hover .card-title {
