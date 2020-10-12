@@ -27,7 +27,7 @@
       <li *ngIf="user" class="nav-item">
         <span class="nav-txt">Welcome, {{ user.username }}</span>
       </li>
-      <li class="nav-item nav-btn">
+      <li *ngIf="!user"class="nav-item nav-btn">
         <button class="btn btn-primary btn-sm" routerLink='login'>Sign In</button>
       </li>
       <li class="nav-item nav-icn">

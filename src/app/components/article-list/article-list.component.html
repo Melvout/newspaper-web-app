@@ -1,3 +1,18 @@
-<img *ngIf="newsList[1]" [src]="'data:' + newsList[1]?.thumbnail_media_type + ';base64,' + newsList[1]?.thumbnail_image" class="img-fluid mx-auto">
 
-<button class="btn btn-primary btn-sm" routerLink='/article-edition/0'>EDITION</button>
+<!-- <button class="btn btn-primary btn-sm" routerLink='/article-edition/0'>EDITION</button> -->
+<div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+  <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.fxFlex.md="50%" *ngFor="let news of newsList">
+    <div class="card">
+      <img *ngIf="news"
+        [src]="'data:' + news?.thumbnail_media_type + ';base64,' + news?.thumbnail_image"
+        class="card-img-top">
+      <div class="card-body">
+        <h4 class="card-title">{{ news.title }}</h4>
+        <p class="card-text">
+          {{ news.abstract }}
+        </p>
+        <p class="card-text"><small class="text-muted">{{ news.category }}</small></p>
+      </div>
+    </div>
+  </div>
+</div>

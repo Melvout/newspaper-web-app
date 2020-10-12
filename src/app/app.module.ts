@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { RouterModule } from '@angular/router';
     ArticleEditionComponent,
     ArticleListComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,9 +34,10 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    FlexLayoutModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

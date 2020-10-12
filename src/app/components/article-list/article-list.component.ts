@@ -11,22 +11,22 @@ import { Article } from '../../interfaces/article';
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.css']
 })
-export class ArticleListComponent implements OnInit 
+export class ArticleListComponent implements OnInit
 {
 
   newsList: Array<Article> = []; // fields : id, id_user, is_public, is_deleted, abstract, subtitle, update_date, category, title, thumbnail_image, thumbnail_image_type
 
   constructor(private newsService: NewsService, private loginService: LoginService){ }
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
-    this.getArticles();    
+    this.getArticles();
   }
 
   /* Function to initialize the lists of all the articles from the API */
   getArticles(): void
   {
-    this.newsService.getArticles().subscribe(list => 
+    this.newsService.getArticles().subscribe(list =>
     {
       this.newsList = list;
     },
