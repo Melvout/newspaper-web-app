@@ -1,0 +1,32 @@
+<input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg">
+
+<img *ngIf="article.image_data" [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" class="img-fluid mx-auto">
+
+
+
+<div class="container">
+    <div class="row margin-top-lg"></div>
+      <div class="col-xl-5 col-lg-6 mx-auto login-form">
+        <form #editionForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input  class="form-control"
+                    type="text"
+                    [(ngModel)]="article.title"
+                    name="stitle">                    
+          </div>
+  
+          <div class="form-group">
+            <label for="subtitle">
+                Subtitle
+            </label>
+            <input  class="form-control"
+                    type="text"
+                    [(ngModel)]="article.subtitle"
+                    name="ssubtitle">
+          </div>
+  
+          <button class="button" type="submit" class="btn btn-primary btn-block">Save</button>
+        </form>
+    </div>
+  </div>

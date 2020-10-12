@@ -25,7 +25,7 @@
     </ul>
     <ul class="navbar-nav">
       <li *ngIf="user" class="nav-item">
-        Welcome {{ user.username }}
+        <p>Welcome {{ user.username }}</p>
       </li>
       <li class="nav-item">
         <button class="btn btn-primary btn-sm" routerLink='login'>Sign In</button>

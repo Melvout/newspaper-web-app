@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { LoginService } from '../../services/login.service'
 import { NewsService } from '../../services/news.service';
 
 import { Article } from '../../interfaces/article';
 
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-article-edition',
@@ -14,11 +19,30 @@ import { Article } from '../../interfaces/article';
 export class ArticleEditionComponent implements OnInit
 {
 
-  newsList: Array<Article> = [];
+  imageError: string;
+  cardImageBase64: any;
+  //editionForm: FormGroup;
+  isImageSaved: boolean;
+  
+  articleId: number;
+  article: Article;
 
-  constructor(private loginService: LoginService, private newsService: NewsService) { }
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private newsService: NewsService, private location: Location, private route: ActivatedRoute){ }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+
+    this.article = { title: "", subtitle:"", abstract:"", category: "International", update_date:"12/10/2020", is_deleted: false, is_public: true};
+    
+    this.route.paramMap.subscribe(params =>
+    {
+      this.articleId = parseInt(params.get('id'), 10);
+      /* Edit mode */
+      if(this.articleId != 0)
+      {
+        this.getArticle(this.articleId);
+      }
+    });
   }
 
   /* Method to POST a new article to the API
@@ -54,27 +78,68 @@ export class ArticleEditionComponent implements OnInit
     () =>
     {
       console.log("Article updated");
-      this.getArticles();
     })
   }
 
-
-  /* Function to initialize the lists of all the articles from the API */
-  getArticles(): void
+  fileChangeEvent(fileInput: any) 
   {
-    this.newsService.getArticles().subscribe(list => 
+    this.imageError = null;
+
+    if (fileInput.target.files && fileInput.target.files[0]) 
     {
-      this.newsList = list;
+      // Size Filter Bytes
+      const MAX_SIZE = 20971520;
+      const ALLOWED_TYPES = ['image/png', 'image/jpeg'];
+
+      if (fileInput.target.files[0].size > MAX_SIZE)
+      {
+        this.imageError = 'Maximum size allowed is ' + MAX_SIZE / 1000 + 'Mb';
+        return false;
+      }
+
+      /*
+      if (!_.includes(ALLOWED_TYPES, fileInput.target.files[0].type))
+      {
+        this.imageError = 'Only Images are allowed ( JPG | PNG )';
+        return false;
+      }*/
+
+      const reader = new FileReader();
+      reader.onload = (e: any) => 
+      {
+        const image = new Image();
+        image.src = e.target.result;
+        image.onload = rs => 
+        {
+          const imgBase64Path = e.target.result;
+          this.cardImageBase64 = imgBase64Path;
+          this.isImageSaved = true;
+
+          this.article.image_media_type = fileInput.target.files[0].type;
+          const head = this.article.image_media_type.length + 13;
+          this.article.image_data = e.target.result.substring(head, e.target.result.length);
+        };
+      };
+
+      reader.readAsDataURL(fileInput.target.files[0]);
+    }
+  }
+
+  getArticle(id: number)
+  {
+    this.newsService.getArticle(id).subscribe(article => 
+    {
+      this.article = article;
     },
     err =>
     {
-      this.newsList = null;
-      console.log("An error has ocurred : " + err);
+      console.log("An error has ocurred : " + err.statusText); // CHANGES NEEDED
+      this.article = null;
     },
     () =>
     {
-      console.log("News list got"); // CHANGES NEEDED
-      console.log(this.newsList);
+      console.log("Article got !"); // CHANGES NEEDED
+      console.log(this.article);
     });
   }
 
@@ -85,6 +150,16 @@ export class ArticleEditionComponent implements OnInit
   isLogged(): boolean
   {
     return this.loginService.isLogged();
+  }
+
+  onSubmit(): void
+  {
+    console.log("ok");
+    if(this.articleId == 0)
+    {
+      console.log("Article creation");
+      this.createArticle(this.article);
+    }
   }
 
 }

@@ -38,7 +38,7 @@ export class ArticleListComponent implements OnInit
     () =>
     {
       console.log("News list retrieved");
-      //console.log(this.newsList);
+      console.log(this.newsList);
     });
   }
 
