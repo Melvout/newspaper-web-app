@@ -5,6 +5,7 @@ import { ThrowStmt } from '@angular/compiler';
 
 import { LoginService } from '../../services/login.service'
 import { Article } from '../../interfaces/article';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-list',
@@ -16,7 +17,7 @@ export class ArticleListComponent implements OnInit
 
   newsList: Array<Article> = []; // fields : id, id_user, is_public, is_deleted, abstract, subtitle, update_date, category, title, thumbnail_image, thumbnail_image_type
 
-  constructor(private newsService: NewsService, private loginService: LoginService){ }
+  constructor(private newsService: NewsService, private loginService: LoginService, private router: Router){ }
 
   ngOnInit(): void
   {
@@ -67,5 +68,9 @@ export class ArticleListComponent implements OnInit
       console.log("Article deleted");
       this.getArticles();
     });
+  }
+
+  viewArticle(articleID: number) : void {
+    this.router.navigate(['/article-details/' + this.newsList[articleID].id]);
   }
 }

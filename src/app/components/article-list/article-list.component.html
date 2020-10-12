@@ -1,13 +1,17 @@
 
 <!-- <button class="btn btn-primary btn-sm" routerLink='/article-edition/0'>EDITION</button> -->
 <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
-  <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.fxFlex.md="50%" *ngFor="let news of newsList">
+  <div fxFlex="33%"
+        fxFlex.xs="100%"
+        fxFlex.sm="100%"
+        fxFlex.fxFlex.md="50%"
+        *ngFor="let news of newsList; index as i">
     <div class="card">
       <img *ngIf="news"
         [src]="'data:' + news?.thumbnail_media_type + ';base64,' + news?.thumbnail_image"
         class="card-img-top">
       <div class="card-body">
-        <h4 class="card-title">{{ news.title }}</h4>
+        <h4 class="card-title" (click)="viewArticle(i)">{{ news.title }}</h4>
         <p class="card-text">
           {{ news.abstract }}
         </p>
