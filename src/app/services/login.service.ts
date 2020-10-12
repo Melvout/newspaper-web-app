@@ -23,7 +23,7 @@ export class LoginService
       .set('Content-Type', 'x-www-form-urlencoded')
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { this.user = null; }
 
   /* Function to know if the user is logged
     If the user is logged : return true

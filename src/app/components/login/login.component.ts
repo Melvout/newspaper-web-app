@@ -40,16 +40,15 @@ export class LoginComponent implements OnInit
     this.loginService.login(name, pwd).subscribe( user => 
     {
       this.user = user;
-      
     },
     err =>
     {
-      console.log("An error has ocurred : " + err.statusText); // CHANGES NEEDED
+      console.log("An error has ocurred : " + err.statusText);
     },
     () =>
     {
-      console.log("User logged"); // CHANGES NEEDED
-      console.log(this.user);
+      //console.log("User logged");
+      //console.log(this.user);
       this.newsService.setUserApiKey(this.loginService.getUser().apikey); // Set the apikey for the current user
       this.router.navigate(['/articles-list']);
     });
