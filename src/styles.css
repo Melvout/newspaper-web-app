@@ -168,5 +168,10 @@ label {
     padding: 16px;
 }
 
+.card:hover .card-title {
+  color: var(--intenseBlue);
+  text-decoration: underline;
+}
+
 
 
