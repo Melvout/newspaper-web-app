@@ -20,7 +20,7 @@ export class NewsService
   // Set the corresponding APIKEY accordig to the received by email
   private APIKEY: string;
   //private APIKEY_ANON = 'GROMANAPIKEY99';
-  private APIKEY_ANON = 'DEV_TEAM_13313';
+  private APIKEY_ANON = 'DEV_TEAM_1331';
 
   private httpOptions = 
   {
