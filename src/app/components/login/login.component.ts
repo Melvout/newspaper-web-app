@@ -5,6 +5,8 @@ import { NewsService } from '../../services/news.service';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit
   user: User;
   loginForm: FormGroup;
 
-  constructor(private loginService: LoginService, private formBuilder: FormBuilder, private newsService: NewsService)
+  constructor(private loginService: LoginService, private formBuilder: FormBuilder, private newsService: NewsService, private router: Router)
   {
     this.loginForm = this.formBuilder.group(
     {
@@ -49,6 +51,7 @@ export class LoginComponent implements OnInit
       console.log("User logged"); // CHANGES NEEDED
       console.log(this.user);
       this.newsService.setUserApiKey(this.loginService.getUser().apikey); // Set the apikey for the current user
+      this.router.navigate(['/articles-list']);
     });
   }
 
@@ -58,7 +61,6 @@ export class LoginComponent implements OnInit
     this.loginService.logout();
     this.user = this.loginService.getUser();
     this.newsService.setAnonymousApiKey(); // Restoring anonymous apikey
-
   }
 
   /* Function to know if the user is logged
