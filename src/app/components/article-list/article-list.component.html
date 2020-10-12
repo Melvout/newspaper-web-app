@@ -15,10 +15,12 @@
         <a (click)="viewArticle(i)" role="button">
           <h4 class="card-title">{{ news.title }}</h4>
         </a>
-        <p class="card-text">
-          {{ news.abstract }}
+        <p class="card-abstract">
+          {{ news.abstract | ellipsis }}
         </p>
-        <p class="card-text"><small class="text-muted">{{ news.category }}</small></p>
+        <span class="badge badge-pill badge-dark">
+            {{ news.category }}
+        </span>
       </div>
     </div>
   </div>

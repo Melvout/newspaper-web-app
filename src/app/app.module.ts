@@ -16,6 +16,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ArticleListComponent,
     NavbarComponent,
     LoginComponent,
+    EllipsisPipe,
   ],
   imports: [
     BrowserModule,

@@ -173,5 +173,15 @@ label {
   text-decoration: underline;
 }
 
+.card-abstract {
+  font-size: 0.82352rem;
+  line-height: 1.5;
+  color: var(--secondaryGray);
+}
+
+/* .badge small {
+  font-weight: 600;
+} */
+
 
 
