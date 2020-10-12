@@ -11,7 +11,8 @@
   </div>
 </div>
 <div class="row margin-bottom-md">
-  <img src="https://picsum.photos/1140/640?random=1" class="img-fluid mx-auto">
+  <!-- <img src="https://picsum.photos/1140/640?random=1" class="img-fluid mx-auto"> -->
+  <img *ngIf="article" [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" class="img-fluid mx-auto">
 </div>
 <div class="row margin-bottom-md">
   <div class="col-xl-6 col-lg-7 mx-auto">

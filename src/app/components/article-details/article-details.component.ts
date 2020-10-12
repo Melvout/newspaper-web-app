@@ -17,6 +17,7 @@ export class ArticleDetailsComponent implements OnInit
 {
   articleId: number;
   article: Article;
+  imgUrl: string = "https://picsum.photos/1140/640?random=1";
 
   constructor(private newsService: NewsService, private loginService: LoginService, private location: Location, private route: ActivatedRoute){ }
 
