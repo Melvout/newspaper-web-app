@@ -179,9 +179,14 @@ label {
   color: var(--secondaryGray);
 }
 
-/* .badge small {
-  font-weight: 600;
-} */
+.card {
+  border-radius: 0.8rem;
+}
+
+.card-img-top {
+  border-top-left-radius: calc(0.8rem - 1px);
+  border-top-right-radius: calc(0.8rem - 1px);
+}
 
 
 
