@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit 
+export class LoginComponent implements OnInit
 {
 
   user: User;
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit
   /* Function to login as a user to add, edit or delete articles by using the login service */
   login(name: string, pwd: string)
   {
-    this.loginService.login(name, pwd).subscribe( user => 
+    this.loginService.login(name, pwd).subscribe( user =>
     {
       this.user = user;
     },
@@ -74,5 +74,6 @@ export class LoginComponent implements OnInit
   onSubmit(userData: { username: string; password: string; })
   {
     this.login(userData.username, userData.password);
+    
   }
 }
