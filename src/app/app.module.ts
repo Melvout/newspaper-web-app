@@ -39,7 +39,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ReactiveFormsModule,
     CommonModule,
     RouterModule,
-    AngularEditorModule 
+    AngularEditorModule,
     FlexLayoutModule,
   ],
   providers: [],
