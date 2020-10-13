@@ -6,6 +6,7 @@ import { NewsService } from '../../services/news.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 
 
@@ -14,41 +15,41 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit 
+export class LoginComponent implements OnInit
 {
 
+  userData: {username: string, password: string};
   user: User;
-  loginForm: FormGroup;
+  correctCredentials: boolean;
+  //loginForm: FormGroup;
 
   constructor(private loginService: LoginService, private formBuilder: FormBuilder, private newsService: NewsService, private router: Router)
   {
-    this.loginForm = this.formBuilder.group(
-    {
-        username: '',
-        password: ''
-    });
+   
   }
 
   ngOnInit(): void
   {
-
+    this.userData = { username: "", password: ""};
+    this.correctCredentials = true;
   }
 
   /* Function to login as a user to add, edit or delete articles by using the login service */
-  login(name: string, pwd: string)
+  login(name: string, pwd: string, loginForm: NgForm)
   {
-    this.loginService.login(name, pwd).subscribe( user => 
+    this.loginService.login(name, pwd).subscribe( user =>
     {
       this.user = user;
     },
     err =>
     {
+      this.correctCredentials = false;
+      loginForm.form.reset();
+      loginForm.form.markAsPristine();
       console.log("An error has ocurred : " + err.statusText);
     },
     () =>
     {
-      //console.log("User logged");
-      //console.log(this.user);
       this.newsService.setUserApiKey(this.loginService.getUser().apikey); // Set the apikey for the current user
       this.router.navigate(['/articles-list']);
     });
@@ -71,8 +72,14 @@ export class LoginComponent implements OnInit
     return this.loginService.isLogged();
   }
 
-  onSubmit(userData: { username: string; password: string; })
+  onSubmit(loginForm: NgForm)
   {
-    this.login(userData.username, userData.password);
+    //this.login(userData.username, userData.password);
+    this.login(this.userData.username, this.userData.password, loginForm);
+  }
+
+  onFocus()
+  {
+    this.correctCredentials = true;
   }
 }
