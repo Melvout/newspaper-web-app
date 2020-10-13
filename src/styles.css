@@ -86,6 +86,21 @@ p {
   color: rgba(255,255,255,1);
 }
 
+.nav-txt {
+  display: block;
+  padding: .5rem 1rem;
+  color: #fff;
+}
+
+.nav-icn {
+  padding-left: 2rem;
+}
+
+.nav-btn {
+  position: relative;
+  top: 0.11764rem;
+}
+
 .bg-dark {
   background-color: var(--darkBlue)!important;
 }
@@ -146,6 +161,31 @@ label {
   border-radius: 0.29411rem;
   border: 1px solid #707375;
   margin-bottom: 1.8rem;
+}
+
+/* Cards */
+.content {
+    padding: 5.5294rem 0;
+}
+
+.card:hover .card-title {
+  color: var(--intenseBlue);
+  text-decoration: underline;
+}
+
+.card-abstract {
+  font-size: 0.82352rem;
+  line-height: 1.5;
+  color: var(--secondaryGray);
+}
+
+.card {
+  border-radius: 0.8rem;
+}
+
+.card-img-top {
+  border-top-left-radius: calc(0.8rem - 1px);
+  border-top-right-radius: calc(0.8rem - 1px);
 }
 
 

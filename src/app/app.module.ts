@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
 
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
@@ -26,7 +28,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ArticleEditionComponent,
     ArticleListComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    EllipsisPipe,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +40,9 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     CommonModule,
     RouterModule,
     AngularEditorModule 
+    FlexLayoutModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
