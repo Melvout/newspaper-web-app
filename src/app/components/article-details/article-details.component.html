@@ -15,7 +15,7 @@
   <img *ngIf="article" [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" class="img-fluid mx-auto">
 </div>
 <div class="row margin-bottom-md">
-  <div [innerHTML]="article.body" class="col-xl-6 col-lg-7 mx-auto">
+  <div id="main-content" [innerHTML]="article?.body" class="col-xl-6 col-lg-7 mx-auto">
 
   </div>
 </div>
@@ -23,8 +23,8 @@
   <div class="col-xl-6 col-lg-7 mx-auto">
     <div class="stripe dark-background margin-bottom-sm"></div>
     <div>
-      <h4>{{ article.category }}</h4>
-      <p class="secondary-text">{{ article.update_date }}</p>
+      <h4>{{ article?.category }}</h4>
+      <p class="secondary-text">{{ article?.update_date }}</p>
     </div>
   </div>
 </div>
