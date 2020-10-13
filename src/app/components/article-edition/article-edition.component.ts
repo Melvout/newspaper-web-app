@@ -19,6 +19,8 @@ import { NgForm } from '@angular/forms';
 export class ArticleEditionComponent implements OnInit
 {
 
+  jsonDoc = null;
+
   imageError: string;
   cardImageBase64: any;
   //editionForm: FormGroup;
@@ -47,10 +49,12 @@ export class ArticleEditionComponent implements OnInit
 
   /* Method to POST a new article to the API
     The article given in parameter must not have an ID in his fields */
-  createArticle(articleToCreate: Article): void
+  createArticle(): void
   {    
+    let articleToCreate = this.article;
     this.newsService.createArticle(articleToCreate).subscribe( elem =>
     {
+
       console.log(elem);
     },
     err =>
@@ -154,12 +158,21 @@ export class ArticleEditionComponent implements OnInit
 
   onSubmit(): void
   {
-    console.log("ok");
+    if( !this.isLogged() )
+    {
+      console.log("User not logged");
+      return;
+    }
     if(this.articleId == 0)
     {
       console.log("Article creation");
-      this.createArticle(this.article);
+      this.createArticle();
     }
+  }
+
+  goBack (): void 
+  {
+    this.location.back();
   }
 
 }

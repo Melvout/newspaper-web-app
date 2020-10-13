@@ -16,6 +16,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    AngularEditorModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,6 @@
-<input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg">
-
-<img *ngIf="article.image_data" [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" class="img-fluid mx-auto">
-
-
-
 <div class="container">
     <div class="row margin-top-lg"></div>
-      <div class="col-xl-5 col-lg-6 mx-auto login-form">
+      <div class="col-xl-8 col-lg-6 mx-auto login-form">
         <form #editionForm="ngForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="title">Title</label>
@@ -25,8 +19,52 @@
                     [(ngModel)]="article.subtitle"
                     name="ssubtitle">
           </div>
-  
+
+          <div class="form-group">
+            <label for="abstract">
+                Abstract
+            </label>
+            <input  class="form-control"
+                    type="text"
+                    [(ngModel)]="article.abstract"
+                    name="sabstract">
+          </div>
+
+          <angular-editor [placeholder]="'Enter text here...'" 
+                          [(ngModel)]="jsonDoc"
+                          name="sbody"></angular-editor>
+
+          <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg">
+
+          <select class="form-control" name="scategory" [(ngModel)]="article.category">
+            <option value="International">International</option>
+            <option value="National">National</option>
+            <option value="Sports">Sports</option>
+            <option value="Economy">Economy</option>
+          </select>
+            
           <button class="button" type="submit" class="btn btn-primary btn-block">Save</button>
+          <button class="button" type="button" (click)="goBack()" class="btn btn-primary btn-block">Back</button>
+
         </form>
+
+
+        <h1>{{ article?.title }}</h1>
+        <p class="body-lg">
+          {{ article?.subtitle }}
+        </p>
+        <p class="body-lg">
+          {{ article?.abstract }}
+        </p>
+        <p class="body-lg">
+          {{ article?.category }}
+        </p>
+        <img *ngIf="article.image_data" [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" class="img-fluid mx-auto">
+        <div [innerHTML]="jsonDoc"></div>
+        
+
     </div>
   </div>
+
+
+ 
