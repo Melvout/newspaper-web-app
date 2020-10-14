@@ -31,7 +31,7 @@
           </div>
 
           <angular-editor [placeholder]="'Enter text here...'" 
-                          [(ngModel)]="jsonDoc"
+                          [(ngModel)]="article.body"
                           name="sbody"></angular-editor>
 
           <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg">
@@ -60,7 +60,7 @@
           {{ article?.category }}
         </p>
         <img *ngIf="article.image_data" [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" class="img-fluid mx-auto">
-        <div [innerHTML]="jsonDoc"></div>
+        <div [innerHTML]="article.body"></div>
         
 
     </div>

@@ -18,9 +18,6 @@ import { NgForm } from '@angular/forms';
 })
 export class ArticleEditionComponent implements OnInit
 {
-
-  jsonDoc = null;
-
   imageError: string;
   cardImageBase64: any;
   isImageSaved: boolean;
@@ -32,14 +29,13 @@ export class ArticleEditionComponent implements OnInit
 
   ngOnInit(): void 
   {
-
     /* If the user is not logged he get redirected to the login page */
     if(!this.isLogged())
     {
       this.router.navigate(['/login']);
     }
 
-    this.article = { title: "", subtitle:"", abstract:"", category: "International", update_date:"12/10/2020", is_deleted: false, is_public: true};
+    this.article = { title: "", subtitle:"", abstract:"", category: "International", update_date:this.getDate(), is_deleted: false, is_public: true};
     
     this.route.paramMap.subscribe(params =>
     {
@@ -159,6 +155,21 @@ export class ArticleEditionComponent implements OnInit
   goBack (): void 
   {
     this.location.back();
+  }
+
+  /* Return the current date */
+  getDate(): string
+  {
+    var today: Date = new Date();
+
+    var seconds = today.getSeconds();
+    var minutes = today.getMinutes();
+    var hour = today.getHours();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    return dd + '-' + mm + '-' + yyyy + " " + hour + ":" + minutes + ":" + seconds;
   }
 
 }
