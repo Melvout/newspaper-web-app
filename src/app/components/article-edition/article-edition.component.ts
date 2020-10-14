@@ -23,7 +23,6 @@ export class ArticleEditionComponent implements OnInit
 
   imageError: string;
   cardImageBase64: any;
-  //editionForm: FormGroup;
   isImageSaved: boolean;
   
   articleId: number;
@@ -45,6 +44,7 @@ export class ArticleEditionComponent implements OnInit
     this.route.paramMap.subscribe(params =>
     {
       this.articleId = parseInt(params.get('id'), 10);
+
       /* Edit mode */
       if(this.articleId != 0)
       {
@@ -60,7 +60,6 @@ export class ArticleEditionComponent implements OnInit
     let articleToCreate = this.article;
     this.newsService.createArticle(articleToCreate).subscribe( elem =>
     {
-
       console.log(elem);
     },
     err =>
@@ -69,28 +68,50 @@ export class ArticleEditionComponent implements OnInit
     },
     () =>
     {
-      console.log("Article created");
+      if(this.articleId == 0){ console.log("Article created"); }
+      else{ console.log("Article updated"); }
+      
     }) 
   }
 
-  /* Method to update an article
-    The paramater article must have an existing ID in his fields */
-  updateArticle(articleToUpdate: Article): void
+  /* Method to retrieve an article from the API */
+  getArticle(id: number)
   {
-    this.newsService.updateArticle(articleToUpdate).subscribe( elem =>
+    this.newsService.getArticle(id).subscribe(article => 
     {
-      console.log(elem);
+      this.article = article;
     },
     err =>
     {
-      console.log("An error has occured : " + err);
+      console.log("An error has ocurred : " + err.statusText);
     },
     () =>
     {
-      console.log("Article updated");
-    })
+      console.log("Article received !");
+    });
   }
 
+  onSubmit(): void
+  {
+    if( !this.isLogged() )
+    {
+      console.log("User not logged");
+      return;
+    }
+
+    this.createArticle();
+  }
+
+  /* Function to know if the user is logged
+    If the user is logged : return true
+    Else : false
+  */
+ isLogged(): boolean
+ {
+   return this.loginService.isLogged();
+ }
+
+  /* Method to upload the image */
   fileChangeEvent(fileInput: any) 
   {
     this.imageError = null;
@@ -132,47 +153,6 @@ export class ArticleEditionComponent implements OnInit
       };
 
       reader.readAsDataURL(fileInput.target.files[0]);
-    }
-  }
-
-  getArticle(id: number)
-  {
-    this.newsService.getArticle(id).subscribe(article => 
-    {
-      this.article = article;
-    },
-    err =>
-    {
-      console.log("An error has ocurred : " + err.statusText); // CHANGES NEEDED
-      this.article = null;
-    },
-    () =>
-    {
-      console.log("Article got !"); // CHANGES NEEDED
-      console.log(this.article);
-    });
-  }
-
-  /* Function to know if the user is logged
-    If the user is logged : return true
-    Else : false
-  */
-  isLogged(): boolean
-  {
-    return this.loginService.isLogged();
-  }
-
-  onSubmit(): void
-  {
-    if( !this.isLogged() )
-    {
-      console.log("User not logged");
-      return;
-    }
-    if(this.articleId == 0)
-    {
-      console.log("Article creation");
-      this.createArticle();
     }
   }
 
