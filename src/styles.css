@@ -188,5 +188,10 @@ label {
   border-top-right-radius: calc(0.8rem - 1px);
 }
 
+/* Article  */
+
+.img-fluid {
+  margin: 0 auto;
+}
 
 
