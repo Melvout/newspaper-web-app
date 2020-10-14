@@ -54,8 +54,7 @@ export class ArticleEditionComponent implements OnInit
     });
   }
 
-  /* Method to POST a new article to the API
-    The article given in parameter must not have an ID in his fields */
+  /* Method to POST or update a new article to the API */
   createArticle(): void
   {    
     let articleToCreate = this.article;
