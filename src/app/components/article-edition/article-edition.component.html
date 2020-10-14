@@ -1,5 +1,10 @@
 <div class="container">
-    <div class="row margin-top-lg"></div>
+  <div class="row margin-top-lg">
+    <div class="col-xl-8 col-lg-6 mx-auto">
+      <h2>Create a new article</h2>
+    </div>
+  </div>
+    <div class="row"></div>
       <div class="col-xl-8 col-lg-6 mx-auto login-form">
         <form #editionForm="ngForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
@@ -7,9 +12,9 @@
             <input  class="form-control"
                     type="text"
                     [(ngModel)]="article.title"
-                    name="stitle">                    
+                    name="stitle">
           </div>
-  
+
           <div class="form-group">
             <label for="subtitle">
                 Subtitle
@@ -30,22 +35,33 @@
                     name="sabstract">
           </div>
 
-          <angular-editor [placeholder]="'Enter text here...'" 
-                          [(ngModel)]="article.body"
-                          name="sbody"></angular-editor>
+          <div class="form-group">
+            <label for="body">Body</label>
+            <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="article.body" name="sbody">
+            </angular-editor>
+          </div>
 
-          <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg">
+          <div class="form-group">
+            <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg">
+          </div>
 
-          <select class="form-control" name="scategory" [(ngModel)]="article.category">
-            <option value="International">International</option>
-            <option value="National">National</option>
-            <option value="Sports">Sports</option>
-            <option value="Economy">Economy</option>
-            <option value="Technology">Technology</option>
-          </select>
-            
-          <button class="button" type="submit" class="btn btn-primary btn-block">Save</button>
-          <button class="button" type="button" (click)="goBack()" class="btn btn-primary btn-block">Back</button>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" name="scategory" [(ngModel)]="article.category">
+              <option value="International">International</option>
+              <option value="National">National</option>
+              <option value="Sports">Sports</option>
+              <option value="Economy">Economy</option>
+              <option value="Technology">Technology</option>
+            </select>
+          </div>
+
+          <div class="text-right">
+            <a class="btn btn-secondary btn-sm"(click)="goBack()">
+              Cancel
+            </a>
+            <button class="button" type="submit" class="btn btn-primary btn-sm btn-block-margin">Create article</button>
+          </div>
 
         </form>
 
@@ -62,10 +78,9 @@
         </p>
         <img *ngIf="article.image_data" [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" class="img-fluid mx-auto">
         <div [innerHTML]="article.body"></div>
-        
+
 
     </div>
   </div>
 
 
- 

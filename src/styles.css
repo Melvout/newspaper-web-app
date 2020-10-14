@@ -32,6 +32,7 @@ h1 {
 
 h2 {
   font-size: 2.369rem;
+  padding-bottom: 2rem;
 }
 
 h3 {
@@ -94,6 +95,10 @@ p {
 
 .nav-icn {
   padding-left: 2rem;
+}
+
+.btn-block-margin {
+  margin-left: 1rem;
 }
 
 .nav-btn {
@@ -186,6 +191,19 @@ label {
 .card-img-top {
   border-top-left-radius: calc(0.8rem - 1px);
   border-top-right-radius: calc(0.8rem - 1px);
+}
+
+/* Article Edition */
+.angular-editor {
+  background-color: #fff;
+  margin-bottom: 1.8rem;
+}
+
+.angular-editor-textarea {
+  padding: 1.5294rem 0.8823rem;
+  border-radius: 0.29411rem;
+  border: 1px solid #707375!important;
+  height: 14rem!important;
 }
 
 
