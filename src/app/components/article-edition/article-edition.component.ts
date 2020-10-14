@@ -35,7 +35,7 @@ export class ArticleEditionComponent implements OnInit
       this.router.navigate(['/login']);
     }
 
-    
+    this.article = { title: "", subtitle:"", abstract:"", category: "", update_date:this.getDate(), is_deleted: false, is_public: true};
     
     this.route.paramMap.subscribe(params =>
     {
@@ -45,11 +45,6 @@ export class ArticleEditionComponent implements OnInit
       if(this.articleId != 0)
       {
         this.getArticle(this.articleId);
-      }
-      /* Creation mode*/
-      else
-      {
-        this.article = { title: "", subtitle:"", abstract:"", category: "", update_date:this.getDate(), is_deleted: false, is_public: true};
       }
     });
   }
