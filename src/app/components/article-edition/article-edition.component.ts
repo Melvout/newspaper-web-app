@@ -29,10 +29,16 @@ export class ArticleEditionComponent implements OnInit
   articleId: number;
   article: Article;
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private newsService: NewsService, private location: Location, private route: ActivatedRoute){ }
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private newsService: NewsService, private location: Location, private route: ActivatedRoute, private router: Router){ }
 
   ngOnInit(): void 
   {
+
+    /* If the user is not logged he get redirected to the login page */
+    if(!this.isLogged())
+    {
+      this.router.navigate(['/login']);
+    }
 
     this.article = { title: "", subtitle:"", abstract:"", category: "International", update_date:"12/10/2020", is_deleted: false, is_public: true};
     
