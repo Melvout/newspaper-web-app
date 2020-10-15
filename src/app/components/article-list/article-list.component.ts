@@ -16,12 +16,14 @@ export class ArticleListComponent implements OnInit
 {
 
   newsList: Array<Article> = []; // fields : id, id_user, is_public, is_deleted, abstract, subtitle, update_date, category, title, thumbnail_image, thumbnail_image_type
+  categoryFilter: string;
 
   constructor(private newsService: NewsService, private loginService: LoginService, private router: Router){ }
 
   ngOnInit(): void
   {
     this.getArticles();
+    this.categoryFilter = '';
   }
 
   /* Function to initialize the lists of all the articles from the API */

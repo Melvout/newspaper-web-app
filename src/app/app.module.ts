@@ -20,6 +20,9 @@ import { EllipsisPipe } from './pipes/ellipsis.pipe';
 
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CategoryFilterPipe } from './pipes/category-filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     NavbarComponent,
     LoginComponent,
     EllipsisPipe,
+    CategoryFilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     RouterModule,
     AngularEditorModule,
     FlexLayoutModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],
