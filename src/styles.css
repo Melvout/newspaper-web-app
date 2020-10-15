@@ -193,18 +193,10 @@ label {
   border-top-right-radius: calc(0.8rem - 1px);
 }
 
-/* Article Edition */
-.angular-editor {
-  background-color: #fff;
-  margin-bottom: 1.8rem;
-}
+/* Article  */
 
-.angular-editor-textarea {
-  padding: 1.5294rem 0.8823rem;
-  border-radius: 0.29411rem;
-  border: 1px solid #707375!important;
-  height: 14rem!important;
+.img-fluid {
+  margin: 0 auto;
 }
-
 
 

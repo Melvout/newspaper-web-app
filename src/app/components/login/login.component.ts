@@ -45,15 +45,26 @@ export class LoginComponent implements OnInit
     {
       this.correctCredentials = false;
       loginForm.form.reset();
-      loginForm.form.markAsPristine();
+      loginForm.form.markAsPristine(); // Reset the form + display a feedback message
       console.log("An error has ocurred : " + err.statusText);
     },
     () =>
     {
       this.newsService.setUserApiKey(this.loginService.getUser().apikey); // Set the apikey for the current user
-      this.router.navigate(['/articles-list']);
+      this.router.navigate(['/articles-list']); // Navigate to the articles-list
     });
   }
+
+  /*login(name: string, pwd: string, loginForm: NgForm)
+  {
+    this.loginService.login(name, pwd).subscribe( user =>
+    {
+      console.log(user);
+      this.user = user;
+      this.newsService.setUserApiKey(this.loginService.getUser().apikey); // Set the apikey for the current user
+      this.router.navigate(['/articles-list']);
+    });
+  }*/
 
   /* Function to log out via the login service */
   logout(): void
