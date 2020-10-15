@@ -209,6 +209,10 @@ label {
   color: var(--orangeRed);
 }
 
+.card-footer:last-child {
+  border-radius: calc(0.8rem - 1px);
+}
+
 .card-footer {
   background: #fff;
   border: 0;
