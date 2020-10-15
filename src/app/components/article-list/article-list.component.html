@@ -1,9 +1,5 @@
-
 <div class="content" fxLayout="row wrap" fxLayoutGap="1rem grid">
-  <div fxFlex="33%"
-        fxFlex.xs="100%"
-        fxFlex.sm="50%"
-        fxFlex.md="50%"
+  <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="50%"
         *ngFor="let news of newsList | categoryFilter: categoryFilter; index as i">
     <div class="card">
       <a (click)="viewArticle(i)" role="button">
@@ -11,16 +7,32 @@
           class="card-img-top">
       </a>
       <div class="card-body">
+        <span class="badge badge-pill badge-dark margin-bottom-xs">
+          {{ news.category }}
+        </span>
         <a (click)="viewArticle(i)" role="button">
           <h4 class="card-title">{{ news.title }}</h4>
         </a>
         <p class="card-abstract">
           {{ news.abstract | ellipsis }}
         </p>
-        <span class="badge badge-pill badge-dark">
-            {{ news.category }}
-        </span>
-        <!--<button class="btn btn-primary btn-sm" routerLink='/article-edition/123'>Edit article</button>-->
+      </div>
+      <div class="card-footer text-right" *ngIf="user">
+        <a class="card-edit d-inline p-2" role="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2">
+            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+          </svg>
+        </a>
+        <a class="card-delete d-inline p-2" role="button" (click)="deleteArticle(i)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            <line x1="10" y1="11" x2="10" y2="17"></line>
+            <line x1="14" y1="11" x2="14" y2="17"></line>
+          </svg>
+        </a>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
         <a class="nav-link" href="#">All <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">International</a>
+        <a class="nav-link" href="#">Technology</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">National</a>
@@ -27,8 +27,21 @@
       <li *ngIf="user" class="nav-item">
         <button class="btn btn-primary btn-sm" routerLink='/article-edition/0'>Create article</button>
       </li>
-      <li *ngIf="user" class="nav-item">
-        <span class="nav-txt">Welcome, {{ user.username }}</span>
+      <li *ngIf="user" class="nav-item dropdown">
+        <span class="nav-txt dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Welcome, {{ user.username }}
+        </span>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item nav-item" role="button" (click)="logout()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            Logout
+          </a>
+        </div>
       </li>
       <li *ngIf="!user"class="nav-item nav-btn">
         <button class="btn btn-primary btn-sm" routerLink='login'>Sign In</button>

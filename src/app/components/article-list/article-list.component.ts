@@ -6,6 +6,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { LoginService } from '../../services/login.service'
 import { Article } from '../../interfaces/article';
 import { Router } from '@angular/router';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-article-list',
@@ -17,6 +18,7 @@ export class ArticleListComponent implements OnInit
 
   newsList: Array<Article> = []; // fields : id, id_user, is_public, is_deleted, abstract, subtitle, update_date, category, title, thumbnail_image, thumbnail_image_type
   categoryFilter: string;
+  user: User;
 
   constructor(private newsService: NewsService, private loginService: LoginService, private router: Router){ }
 
@@ -24,6 +26,7 @@ export class ArticleListComponent implements OnInit
   {
     this.getArticles();
     this.categoryFilter = '';
+    this.user = this.loginService.getUser();
   }
 
   /* Function to initialize the lists of all the articles from the API */

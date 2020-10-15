@@ -142,6 +142,10 @@ p {
   margin-bottom: 2.3529rem;
 }
 
+.margin-bottom-xs {
+  margin-bottom: 1rem;
+}
+
 .light-background {
   background-color: var(--intenseBlue);
 }
@@ -191,6 +195,23 @@ label {
 .card-img-top {
   border-top-left-radius: calc(0.8rem - 1px);
   border-top-right-radius: calc(0.8rem - 1px);
+}
+
+.card-edit, .card-delete {
+  color: var(--secondaryGray);
+}
+
+.card-edit:hover {
+  color: var(--intenseBlue);
+}
+
+.card-delete:hover {
+  color: var(--orangeRed);
+}
+
+.card-footer {
+  background: #fff;
+  border: 0;
 }
 
 /* Article  */

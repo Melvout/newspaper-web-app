@@ -7,14 +7,14 @@ import { LoginService } from '../../services/login.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit 
+export class NavbarComponent implements OnInit
 {
 
   user: User;
 
   constructor(private loginService: LoginService) { }
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
     this.user = this.loginService.getUser();
   }
@@ -22,6 +22,12 @@ export class NavbarComponent implements OnInit
   ngDoCheck(): void
   {
     this.user = this.loginService.getUser();
+  }
+
+  /* Function to log out */
+  logout()
+  {
+    this.user = null;
   }
 
 }
