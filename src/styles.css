@@ -165,11 +165,20 @@ label {
   padding-bottom: 0.70588rem;
   margin-bottom: 0;
 }
+
+.form-group {
+  margin-bottom: 1.8rem;
+}
+
 .form-control {
   padding: 1.5294rem 0.8823rem;
   border-radius: 0.29411rem;
   border: 1px solid #707375;
-  margin-bottom: 1.8rem;
+}
+
+.form-control-sm {
+  border-radius: 0.29411rem;
+  border: 1px solid #707375;
 }
 
 /* Cards */
