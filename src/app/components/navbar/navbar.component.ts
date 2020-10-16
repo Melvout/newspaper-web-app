@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { LoginService } from '../../services/login.service';
+import { NewsService } from '../../services/news.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -11,8 +13,9 @@ export class NavbarComponent implements OnInit
 {
 
   user: User;
+  term: string;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private newsService: NewsService) { }
 
   ngOnInit(): void
   {
@@ -30,4 +33,13 @@ export class NavbarComponent implements OnInit
     this.user = null;
   }
 
+  setCategoryFilter(categoryFilter: string): void
+  {
+    this.newsService.setCategoryFilter(categoryFilter);
+  }
+
+  setTermsFilter(event): void
+  {
+    this.newsService.setTermsFilter(event.target.value);
+  }
 }

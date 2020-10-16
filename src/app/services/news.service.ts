@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Article } from '../interfaces/article';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -15,7 +15,12 @@ export class NewsService
   private newsUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/articles';  // URL to web api
   private articleUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/article';  // URL to web api
 
-  constructor(private http: HttpClient) { }
+  private categoryFilter: string;
+  
+
+  @Output() changeCategoryFilter: EventEmitter<string> = new EventEmitter();
+  @Output() changeTermsFilter: EventEmitter<string> = new EventEmitter();
+  constructor(private http: HttpClient) { this.categoryFilter = ''; }
 
   // Set the corresponding APIKEY accordig to the received by email
   private APIKEY: string;
@@ -107,5 +112,17 @@ export class NewsService
     console.log('Creating article');
     console.log(article);
     return this.http.post<Article>(this.articleUrl, article, this.httpOptions);
+  }
+
+  setCategoryFilter(categoryFilter: string): void
+  {
+    this.categoryFilter = categoryFilter;
+    console.log(">>>" + categoryFilter);
+    this.changeCategoryFilter.emit(this.categoryFilter);
+  }
+
+  setTermsFilter(termsFilter: string): void
+  {
+    this.changeTermsFilter.emit(termsFilter);
   }
 }

@@ -11,17 +11,18 @@
         <a class="nav-link" href="#">All <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Technology</a>
+        <a class="nav-link" (click)="setCategoryFilter('Technology')">Technology</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">National</a>
+        <a class="nav-link" (click)="setCategoryFilter('National')">National</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Sports</a>
+        <a class="nav-link" (click)="setCategoryFilter('Sports')">Sports</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Economy</a>
+        <a class="nav-link" (click)="setCategoryFilter('Economy')">Economy</a>
       </li>
+      <input [(ngModel)]="term" (keydown)="setTermsFilter($event)" type="text" placeholder="Search in articles">
     </ul>
     <ul class="navbar-nav">
       <li *ngIf="user" class="nav-item">
