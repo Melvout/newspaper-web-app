@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit
 {
 
   user: User;
+  term: string;
 
   constructor(private loginService: LoginService, private newsService: NewsService) { }
 

@@ -17,7 +17,7 @@ export class NewsService
 
   private categoryFilter: string;
 
-  @Output() change: EventEmitter<string> = new EventEmitter();
+  @Output() changeCategoryFilter: EventEmitter<string> = new EventEmitter();
 
   constructor(private http: HttpClient) { this.categoryFilter = ''; }
 
@@ -117,7 +117,7 @@ export class NewsService
   {
     this.categoryFilter = categoryFilter;
     console.log(">>>" + categoryFilter);
-    this.change.emit(this.categoryFilter);
+    this.changeCategoryFilter.emit(this.categoryFilter);
   }
 
   getCategoryFilter(): string

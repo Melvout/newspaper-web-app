@@ -22,6 +22,7 @@
       <li class="nav-item">
         <a class="nav-link" (click)="setCategoryFilter('Economy')">Economy</a>
       </li>
+      <input [(ngModel)]="term" type="text" placeholder="Search in articles">
     </ul>
     <ul class="navbar-nav">
       <li *ngIf="user" class="nav-item">

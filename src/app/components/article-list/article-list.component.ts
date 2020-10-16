@@ -24,7 +24,7 @@ export class ArticleListComponent implements OnInit
   {
     this.getArticles();
     this.categoryFilter = '';
-    this.newsService.change.subscribe( (categoryFilter: string) =>
+    this.newsService.changeCategoryFilter.subscribe( (categoryFilter: string) =>
     {
       this.categoryFilter = categoryFilter;
     })
