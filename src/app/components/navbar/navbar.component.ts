@@ -27,10 +27,12 @@ export class NavbarComponent implements OnInit
     this.user = this.loginService.getUser();
   }
 
-  /* Function to log out */
-  logout()
+  /* Function to log out via the login service */
+  logout(): void
   {
-    this.user = null;
+    this.loginService.logout();
+    this.user = this.loginService.getUser();
+    this.newsService.setAnonymousApiKey(); // Restoring anonymous apikey
   }
 
   setCategoryFilter(categoryFilter: string): void
