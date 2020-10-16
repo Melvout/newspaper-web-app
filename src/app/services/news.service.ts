@@ -16,9 +16,10 @@ export class NewsService
   private articleUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/article';  // URL to web api
 
   private categoryFilter: string;
+  
 
   @Output() changeCategoryFilter: EventEmitter<string> = new EventEmitter();
-
+  @Output() changeTermsFilter: EventEmitter<string> = new EventEmitter();
   constructor(private http: HttpClient) { this.categoryFilter = ''; }
 
   // Set the corresponding APIKEY accordig to the received by email
@@ -120,8 +121,8 @@ export class NewsService
     this.changeCategoryFilter.emit(this.categoryFilter);
   }
 
-  getCategoryFilter(): string
+  setTermsFilter(termsFilter: string): void
   {
-    return this.categoryFilter;
+    this.changeTermsFilter.emit(termsFilter);
   }
 }

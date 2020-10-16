@@ -5,7 +5,7 @@
         fxFlex.xs="100%"
         fxFlex.sm="50%"
         fxFlex.md="50%"
-        *ngFor="let news of newsList | categoryFilter: categoryFilter; index as i">
+        *ngFor="let news of newsList | categoryFilter: categoryFilter | filter: termsFilter; index as i">
     <div class="card">
       <a (click)="viewArticle(i)" role="button">
         <img *ngIf="news" [src]="'data:' + news?.thumbnail_media_type + ';base64,' + news?.thumbnail_image"

@@ -31,4 +31,9 @@ export class NavbarComponent implements OnInit
   {
     this.newsService.setCategoryFilter(categoryFilter);
   }
+
+  setTermsFilter(event): void
+  {
+    this.newsService.setTermsFilter(event.target.value);
+  }
 }

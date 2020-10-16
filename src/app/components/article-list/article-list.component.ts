@@ -17,6 +17,7 @@ export class ArticleListComponent implements OnInit
 
   newsList: Array<Article> = []; // fields : id, id_user, is_public, is_deleted, abstract, subtitle, update_date, category, title, thumbnail_image, thumbnail_image_type
   categoryFilter: string;
+  termsFilter: string;
 
   constructor(private newsService: NewsService, private loginService: LoginService, private router: Router){ }
 
@@ -27,6 +28,10 @@ export class ArticleListComponent implements OnInit
     this.newsService.changeCategoryFilter.subscribe( (categoryFilter: string) =>
     {
       this.categoryFilter = categoryFilter;
+    })
+    this.newsService.changeTermsFilter.subscribe( (termsFilter: string) =>
+    {
+      this.termsFilter = termsFilter;
     })
   }
 
