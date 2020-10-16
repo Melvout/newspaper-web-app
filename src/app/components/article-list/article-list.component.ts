@@ -18,8 +18,8 @@ export class ArticleListComponent implements OnInit
 
   newsList: Array<Article> = []; // fields : id, id_user, is_public, is_deleted, abstract, subtitle, update_date, category, title, thumbnail_image, thumbnail_image_type
   categoryFilter: string;
-  user: User;
   termsFilter: string;
+  user: User;
 
   constructor(private newsService: NewsService, private loginService: LoginService, private router: Router){ }
 
