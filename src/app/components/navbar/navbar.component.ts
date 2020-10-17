@@ -14,11 +14,13 @@ export class NavbarComponent implements OnInit
 
   user: User;
   term: string;
+  currentFilter: string;
 
   constructor(private loginService: LoginService, private newsService: NewsService) { }
 
   ngOnInit(): void
   {
+    this.currentFilter = '';
     this.user = this.loginService.getUser();
   }
 
@@ -37,6 +39,7 @@ export class NavbarComponent implements OnInit
 
   setCategoryFilter(categoryFilter: string): void
   {
+    this.currentFilter = categoryFilter;
     this.newsService.setCategoryFilter(categoryFilter);
   }
 

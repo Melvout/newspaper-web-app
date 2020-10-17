@@ -7,19 +7,19 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">All <span class="sr-only">(current)</span></a>
+      <li class="nav-item" [ngClass]="(currentFilter == '') ? 'active' : ''">
+        <a class="nav-link"(click)="setCategoryFilter('')">All <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" [ngClass]="(currentFilter == 'Technology') ? 'active' : ''">
         <a class="nav-link" (click)="setCategoryFilter('Technology')" role="button">Technology</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" [ngClass]="(currentFilter == 'National') ? 'active' : ''">
         <a class="nav-link" (click)="setCategoryFilter('National')" role="button">National</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" [ngClass]="(currentFilter == 'Sports') ? 'active' : ''">
         <a class="nav-link" (click)="setCategoryFilter('Sports')" role="button">Sports</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" [ngClass]="(currentFilter == 'Economy') ? 'active' : ''">
         <a class="nav-link" (click)="setCategoryFilter('Economy')" role="button">Economy</a>
       </li>
       <li class="nav-item">
