@@ -9,16 +9,18 @@ import { NewsService } from '../../services/news.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit 
+export class NavbarComponent implements OnInit
 {
 
   user: User;
   term: string;
+  currentFilter: string;
 
   constructor(private loginService: LoginService, private newsService: NewsService) { }
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
+    this.currentFilter = '';
     this.user = this.loginService.getUser();
   }
 
@@ -27,8 +29,17 @@ export class NavbarComponent implements OnInit
     this.user = this.loginService.getUser();
   }
 
+  /* Function to log out via the login service */
+  logout(): void
+  {
+    this.loginService.logout();
+    this.user = this.loginService.getUser();
+    this.newsService.setAnonymousApiKey(); // Restoring anonymous apikey
+  }
+
   setCategoryFilter(categoryFilter: string): void
   {
+    this.currentFilter = categoryFilter;
     this.newsService.setCategoryFilter(categoryFilter);
   }
 

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit
 
   constructor(private loginService: LoginService, private formBuilder: FormBuilder, private newsService: NewsService, private router: Router)
   {
-   
+
   }
 
   ngOnInit(): void
@@ -66,13 +66,6 @@ export class LoginComponent implements OnInit
     });
   }*/
 
-  /* Function to log out via the login service */
-  logout(): void
-  {
-    this.loginService.logout();
-    this.user = this.loginService.getUser();
-    this.newsService.setAnonymousApiKey(); // Restoring anonymous apikey
-  }
 
   /* Function to know if the user is logged
     If the user is logged : return true

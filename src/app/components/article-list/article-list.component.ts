@@ -6,6 +6,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { LoginService } from '../../services/login.service'
 import { Article } from '../../interfaces/article';
 import { Router } from '@angular/router';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-article-list',
@@ -18,6 +19,7 @@ export class ArticleListComponent implements OnInit
   newsList: Array<Article> = []; // fields : id, id_user, is_public, is_deleted, abstract, subtitle, update_date, category, title, thumbnail_image, thumbnail_image_type
   categoryFilter: string;
   termsFilter: string;
+  user: User;
 
   constructor(private newsService: NewsService, private loginService: LoginService, private router: Router){ }
 
@@ -25,6 +27,7 @@ export class ArticleListComponent implements OnInit
   {
     this.getArticles();
     this.categoryFilter = '';
+    this.user = this.loginService.getUser();
     this.newsService.changeCategoryFilter.subscribe( (categoryFilter: string) =>
     {
       this.categoryFilter = categoryFilter;
@@ -81,7 +84,14 @@ export class ArticleListComponent implements OnInit
     });
   }
 
-  viewArticle(articleID: number) : void {
+  /* Function to navigate the a specific article details */
+  viewArticle(articleID: number): void 
+  {
     this.router.navigate(['/article-details/' + this.newsList[articleID].id]);
+  }
+
+  editArticle(articleID: number): void
+  {
+    this.router.navigate(['/article-edition/' + this.newsList[articleID].id]);
   }
 }

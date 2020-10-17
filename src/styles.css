@@ -142,6 +142,10 @@ p {
   margin-bottom: 2.3529rem;
 }
 
+.margin-bottom-xs {
+  margin-bottom: 1rem;
+}
+
 .light-background {
   background-color: var(--intenseBlue);
 }
@@ -161,11 +165,20 @@ label {
   padding-bottom: 0.70588rem;
   margin-bottom: 0;
 }
+
+.form-group {
+  margin-bottom: 1.8rem;
+}
+
 .form-control {
   padding: 1.5294rem 0.8823rem;
   border-radius: 0.29411rem;
   border: 1px solid #707375;
-  margin-bottom: 1.8rem;
+}
+
+.form-control-sm {
+  border-radius: 0.29411rem;
+  border: 1px solid #707375;
 }
 
 /* Cards */
@@ -191,6 +204,27 @@ label {
 .card-img-top {
   border-top-left-radius: calc(0.8rem - 1px);
   border-top-right-radius: calc(0.8rem - 1px);
+}
+
+.card-edit, .card-delete {
+  color: var(--secondaryGray);
+}
+
+.card-edit:hover {
+  color: var(--intenseBlue);
+}
+
+.card-delete:hover {
+  color: var(--orangeRed);
+}
+
+.card-footer:last-child {
+  border-radius: calc(0.8rem - 1px);
+}
+
+.card-footer {
+  background: #fff;
+  border: 0;
 }
 
 /* Article  */
