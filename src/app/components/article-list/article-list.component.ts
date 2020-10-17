@@ -84,7 +84,14 @@ export class ArticleListComponent implements OnInit
     });
   }
 
-  viewArticle(articleID: number) : void {
+  /* Function to navigate the a specific article details */
+  viewArticle(articleID: number): void 
+  {
     this.router.navigate(['/article-details/' + this.newsList[articleID].id]);
+  }
+
+  editArticle(articleID: number): void
+  {
+    this.router.navigate(['/article-edition/' + this.newsList[articleID].id]);
   }
 }
