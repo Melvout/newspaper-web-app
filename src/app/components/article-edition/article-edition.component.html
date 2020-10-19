@@ -1,15 +1,16 @@
 <div class="container">
   <div class="row margin-top-lg">
     <div class="col-xl-8 col-lg-6 mx-auto">
-      <h2 *ngIf="articleId == 0">Create a new article</h2>
-      <h2 *ngIf="articleId != 0">Update the article</h2>
+      <h2 *ngIf="articleId == 0">Create A New Article</h2>
+      <h2 *ngIf="articleId != 0">Edit Article</h2>
+      <p>Fields mark with * are mandatory.</p>
     </div>
   </div>
     <div class="row"></div>
       <div class="col-xl-8 col-lg-6 mx-auto login-form">
         <form #editionForm="ngForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">Title*</label>
             <input  class="form-control"
                     required
                     name="stitle"
@@ -21,11 +22,11 @@
 
           <div class="form-group">
             <label for="subtitle">
-                Subtitle
+                Subtitle*
             </label>
             <input  class="form-control"
                     required
-                    name="ssubtitle" 
+                    name="ssubtitle"
                     type="text"
                     #ssubtitle = "ngModel"
                     [(ngModel)]="article.subtitle">
@@ -34,7 +35,7 @@
 
           <div class="form-group">
             <label for="abstract">
-                Abstract
+                Abstract*
             </label>
             <input  class="form-control"
                     required
@@ -45,9 +46,9 @@
           </div>
           <div *ngIf="(!(sabstract.valid || sabstract.pristine))" class="alert alert-danger" role="alert">You must enter an abstract !</div>
 
-          
+
           <div class="form-group">
-            <label for="category">Category</label>
+            <label for="category">Category*</label>
             <select class="custom-select" required name="scategory" #scategory = "ngModel" [(ngModel)]="article.category">
               <option value="International">International</option>
               <option value="National">National</option>
@@ -59,16 +60,16 @@
           <div *ngIf="(!(scategory.valid || scategory.pristine))" class="alert alert-danger" role="alert">You must select a category !</div>
 
           <div class="form-group">
-            <label for="image">Image</label>
+            <label for="image">Image*</label>
             <div class="input-group mb-3">
               <div class="custom-file">
-                <input  class="custom-file-input" 
-                        required 
+                <input  class="custom-file-input"
+                        required
                         name="simage"
-                        type="file" 
+                        type="file"
                         #simage = "ngModel"
-                        (change)="fileChangeEvent($event)" 
-                        accept="image/png, image/jpeg" 
+                        (change)="fileChangeEvent($event)"
+                        accept="image/png, image/jpeg"
                         aria-describedby="inputGroupFileAddon01"
                         [(ngModel)]="test">
                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
@@ -79,8 +80,8 @@
 
           <div class="form-group">
             <label for="body">Body</label>
-            <angular-editor [placeholder]="'Enter text here...'" 
-                            [(ngModel)]="article.body" 
+            <angular-editor [placeholder]="'Enter text here...'"
+                            [(ngModel)]="article.body"
                             name="sbody">
             </angular-editor>
           </div>
@@ -98,20 +99,41 @@
         <div *ngIf="articleCreated" class="alert alert-success" role="alert">Article succesfully created !</div>
         <div *ngIf="articleUpdated" class="alert alert-success" role="alert">Article succesfully created !</div>
 
+        <hr/>
 
-        <h1>{{ article?.title }}</h1>
-        <p class="body-lg">
-          {{ article?.subtitle }}
-        </p>
-        <p class="body-lg">
-          {{ article?.abstract }}
-        </p>
-        <p class="body-lg">
-          {{ article?.category }}
-        </p>
-        <img *ngIf="article.image_data" [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" class="img-fluid mx-auto">
-        <div [innerHTML]="article.body"></div>
-        
+        <div class="bg-light margin-top-lg p-4">
+          <div class="form-group">
+            <label *ngIf="(stitle.dirty)">Title</label>
+            <h1>{{ article?.title }}</h1>
+          </div>
+          <div class="form-group">
+            <label *ngIf="(ssubtitle.dirty)">Subtitle</label>
+            <p class="body-lg">
+              {{ article?.subtitle }}
+            </p>
+          </div>
+          <div class="form-group">
+            <label *ngIf="(sabstract.dirty)">Abstract</label>
+            <p class="body-lg">
+              {{ article?.abstract }}
+            </p>
+          </div>
+          <div class="form-group">
+            <label *ngIf="(scategory.dirty)">Category</label>
+            <p class="body-lg">
+              {{ article?.category }}
+            </p>
+          </div>
+          <div class="form-group">
+            <label *ngIf="(simage.dirty)">Image</label>
+            <img *ngIf="article.image_data" [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data"
+              class="img-fluid mx-auto">
+          </div>
+          <div class="form-group">
+            <div [innerHTML]="article.body"></div>
+          </div>
+        </div>
+
     </div>
   </div>
 
