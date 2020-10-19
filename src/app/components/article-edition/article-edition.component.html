@@ -10,44 +10,44 @@
           <div class="form-group">
             <label for="title">Title</label>
             <input  class="form-control"
+                    required
+                    name="stitle"
                     type="text"
-                    [(ngModel)]="article.title"
-                    name="stitle">
+                    #stitle = "ngModel"
+                    [(ngModel)]="article.title">
           </div>
+          <div *ngIf="!(stitle.valid || stitle.pristine)" class="alert alert-danger" role="alert">You must enter a title !</div>
 
           <div class="form-group">
             <label for="subtitle">
                 Subtitle
             </label>
             <input  class="form-control"
+                    required
+                    name="ssubtitle" 
                     type="text"
-                    [(ngModel)]="article.subtitle"
-                    name="ssubtitle">
+                    #ssubtitle = "ngModel"
+                    [(ngModel)]="article.subtitle">
           </div>
+          <div *ngIf="(!(ssubtitle.valid || ssubtitle.pristine))" class="alert alert-danger" role="alert">You must enter a subtitle !</div>
 
           <div class="form-group">
             <label for="abstract">
                 Abstract
             </label>
             <input  class="form-control"
+                    required
+                    name="sabstract"
                     type="text"
-                    [(ngModel)]="article.abstract"
-                    name="sabstract">
+                    #sabstract = "ngModel"
+                    [(ngModel)]="article.abstract">
           </div>
+          <div *ngIf="(!(sabstract.valid || sabstract.pristine))" class="alert alert-danger" role="alert">You must enter an abstract !</div>
 
-          <div class="form-group">
-            <label for="body">Body</label>
-            <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="article.body" name="sbody">
-            </angular-editor>
-          </div>
-
-          <div class="form-group">
-            <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpeg">
-          </div>
-
+          
           <div class="form-group">
             <label for="category">Category</label>
-            <select class="form-control" name="scategory" [(ngModel)]="article.category">
+            <select class="custom-select" required name="scategory" #scategory = "ngModel" [(ngModel)]="article.category">
               <option value="International">International</option>
               <option value="National">National</option>
               <option value="Sports">Sports</option>
@@ -55,15 +55,45 @@
               <option value="Technology">Technology</option>
             </select>
           </div>
+          <div *ngIf="(!(scategory.valid || scategory.pristine))" class="alert alert-danger" role="alert">You must select a category !</div>
+
+          <div class="form-group">
+            <label for="image">Image</label>
+            <div class="input-group mb-3">
+              <div class="custom-file">
+                <input  class="custom-file-input" 
+                        required 
+                        name="simage"
+                        type="file" 
+                        #simage = "ngModel"
+                        (change)="fileChangeEvent($event)" 
+                        accept="image/png, image/jpeg" 
+                        aria-describedby="inputGroupFileAddon01"
+                        [(ngModel)]="test">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="(!(simage.valid || simage.pristine))" class="alert alert-danger" role="alert">You must upload an image !</div>
+
+          <div class="form-group">
+            <label for="body">Body</label>
+            <angular-editor [placeholder]="'Enter text here...'" 
+                            [(ngModel)]="article.body" 
+                            name="sbody">
+            </angular-editor>
+          </div>
 
           <div class="text-right">
             <a class="btn btn-secondary btn-sm"(click)="goBack()">
               Cancel
             </a>
-            <button class="button" type="submit" class="btn btn-primary btn-sm btn-block-margin">Create article</button>
+            <button class="button" type="submit" class="btn btn-primary btn-sm btn-block-margin" [disabled]="!editionForm.valid">Create article</button>
           </div>
 
         </form>
+
+        <div *ngIf="articleCreated" class="alert alert-success" role="alert">Article succesfully created !</div>
 
 
         <h1>{{ article?.title }}</h1>
@@ -78,8 +108,7 @@
         </p>
         <img *ngIf="article.image_data" [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" class="img-fluid mx-auto">
         <div [innerHTML]="article.body"></div>
-
-
+        
     </div>
   </div>
 

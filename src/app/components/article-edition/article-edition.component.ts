@@ -21,14 +21,19 @@ export class ArticleEditionComponent implements OnInit
   imageError: string;
   cardImageBase64: any;
   isImageSaved: boolean;
+  test: string;
   
   articleId: number;
   article: Article;
+
+  articleCreated: boolean;
 
   constructor(private formBuilder: FormBuilder, private loginService: LoginService, private newsService: NewsService, private location: Location, private route: ActivatedRoute, private router: Router){ }
 
   ngOnInit(): void 
   {
+    this.articleCreated = false;
+
     /* If the user is not logged he get redirected to the login page */
     if(!this.isLogged())
     {
@@ -63,7 +68,7 @@ export class ArticleEditionComponent implements OnInit
     },
     () =>
     {
-      if(this.articleId == 0){ console.log("Article created"); }
+      if(this.articleId == 0){ console.log("Article created"); this.articleCreated = true;}
       else{ console.log("Article updated"); }
       
     }) 
@@ -94,7 +99,6 @@ export class ArticleEditionComponent implements OnInit
       console.log("User not logged");
       return;
     }
-
     this.createArticle();
   }
 
@@ -117,6 +121,8 @@ export class ArticleEditionComponent implements OnInit
       // Size Filter Bytes
       const MAX_SIZE = 20971520;
       const ALLOWED_TYPES = ['image/png', 'image/jpeg'];
+
+      document.querySelector('.custom-file-label').innerHTML = fileInput.target.files[0].name;
 
       if (fileInput.target.files[0].size > MAX_SIZE)
       {
