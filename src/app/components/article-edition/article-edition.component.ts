@@ -27,12 +27,14 @@ export class ArticleEditionComponent implements OnInit
   article: Article;
 
   articleCreated: boolean;
+  articleUpdated: boolean;
 
   constructor(private formBuilder: FormBuilder, private loginService: LoginService, private newsService: NewsService, private location: Location, private route: ActivatedRoute, private router: Router){ }
 
   ngOnInit(): void 
   {
     this.articleCreated = false;
+    this.articleUpdated = false;
 
     /* If the user is not logged he get redirected to the login page */
     if(!this.isLogged())
@@ -69,7 +71,7 @@ export class ArticleEditionComponent implements OnInit
     () =>
     {
       if(this.articleId == 0){ console.log("Article created"); this.articleCreated = true;}
-      else{ console.log("Article updated"); }
+      else{ console.log("Article updated"); this.articleUpdated = true}
       
     }) 
   }
