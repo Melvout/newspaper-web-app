@@ -36,6 +36,10 @@ export class ArticleListComponent implements OnInit
     {
       this.termsFilter = termsFilter;
     })
+    this.loginService.changeUserStatus.subscribe( (userStatus: User) =>
+    {
+      this.user = userStatus;
+    })
   }
 
   /* Function to initialize the lists of all the articles from the API */

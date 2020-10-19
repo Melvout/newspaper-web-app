@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 import { User } from '../interfaces/user';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -10,9 +10,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 export class LoginService 
 {
-
+  @Output() changeUserStatus: EventEmitter<User> = new EventEmitter();
   private user: User;
-
   private loginUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/login';
 
   private message: string;
@@ -59,6 +58,7 @@ export class LoginService
   logout()
   {
     this.user = null;
+    this.changeUserStatus.emit(this.user);
   }
 
 
@@ -77,5 +77,4 @@ export class LoginService
       return of(result as T);
     };
   }
-
 }
