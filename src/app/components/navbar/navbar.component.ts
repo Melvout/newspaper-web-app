@@ -24,12 +24,10 @@ export class NavbarComponent implements OnInit
     {
       if (location.path().includes('list'))
       {
-        console.log("OKOK");
         this.showCategories = true;
       } 
       else 
       {
-        console.log("NONO");
         this.showCategories = false;
       }
     });
