@@ -52,6 +52,7 @@ export class ArticleEditionComponent implements OnInit
       if(this.articleId != 0)
       {
         this.getArticle(this.articleId);
+        this.isImageSaved = true;
       }
     });
   }

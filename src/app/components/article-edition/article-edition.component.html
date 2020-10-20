@@ -62,8 +62,7 @@
             <label for="image">Image</label>
             <div class="input-group mb-3">
               <div class="custom-file">
-                <input  class="custom-file-input" 
-                        required 
+                <input  class="custom-file-input"  
                         name="simage"
                         type="file" 
                         #simage = "ngModel"
@@ -75,7 +74,7 @@
               </div>
             </div>
           </div>
-          <div *ngIf="(!(simage.valid || simage.pristine))" class="alert alert-danger" role="alert">You must upload an image !</div>
+          <div *ngIf="(!(isImageSaved || simage.pristine))" class="alert alert-danger" role="alert">You must upload an image !</div>
 
           <div class="form-group">
             <label for="body">Body</label>
@@ -89,8 +88,8 @@
             <a class="btn btn-secondary btn-sm"(click)="goBack()">
               Cancel
             </a>
-            <button *ngIf="articleId == 0" class="button" type="submit" class="btn btn-primary btn-sm btn-block-margin" [disabled]="!editionForm.valid">Create article</button>
-            <button *ngIf="articleId != 0" class="button" type="submit" class="btn btn-primary btn-sm btn-block-margin" [disabled]="!editionForm.valid">Update article</button>
+            <button *ngIf="articleId == 0" class="button" type="submit" class="btn btn-primary btn-sm btn-block-margin" [disabled]="(!editionForm.valid || !isImageSaved )">Create article</button>
+            <button *ngIf="articleId != 0" class="button" type="submit" class="btn btn-primary btn-sm btn-block-margin" [disabled]="(!editionForm.valid || !isImageSaved )">Update article</button>
           </div>
 
         </form>
