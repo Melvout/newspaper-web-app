@@ -134,8 +134,16 @@ p {
   margin-top: 5.5294rem;
 }
 
+.margin-top-md {
+  margin-bottom: 4.209rem;
+}
+
+.btn-align {
+  margin-top: 1rem;
+}
+
 .margin-bottom-md {
-  margin-bottom: 4.209rem
+  margin-bottom: 4.209rem;
 }
 
 .margin-bottom-sm {

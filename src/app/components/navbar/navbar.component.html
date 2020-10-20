@@ -28,9 +28,6 @@
       </li>
     </ul>
     <ul class="navbar-nav">
-      <li *ngIf="user" class="nav-item">
-        <button class="btn btn-primary btn-sm nav-btn" routerLink='/article-edition/0'>Create article</button>
-      </li>
       <li *ngIf="user" class="nav-item dropdown">
         <span class="nav-txt dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Welcome, {{ user.username }}
