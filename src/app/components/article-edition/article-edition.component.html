@@ -101,29 +101,29 @@
 
         <div class="bg-light margin-top-lg p-4">
           <div class="form-group">
-            <label *ngIf="(stitle.dirty)">Title</label>
+            <label *ngIf="(article.title)">Title</label>
             <h1>{{ article?.title }}</h1>
           </div>
           <div class="form-group">
-            <label *ngIf="(ssubtitle.dirty)">Subtitle</label>
+            <label *ngIf="(article.subtitle)">Subtitle</label>
             <p class="body-lg">
               {{ article?.subtitle }}
             </p>
           </div>
           <div class="form-group">
-            <label *ngIf="(sabstract.dirty)">Abstract</label>
+            <label *ngIf="(article.abstract)">Abstract</label>
             <p class="body-lg">
               {{ article?.abstract }}
             </p>
           </div>
           <div class="form-group">
-            <label *ngIf="(scategory.dirty)">Category</label>
+            <label *ngIf="(article.category)">Category</label>
             <p class="body-lg">
               {{ article?.category }}
             </p>
           </div>
           <div class="form-group">
-            <label *ngIf="(simage.dirty)">Image</label>
+            <label *ngIf="(article.image_data)">Image</label>
             <img *ngIf="article.image_data" [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data"
               class="img-fluid mx-auto">
           </div>
