@@ -4,8 +4,9 @@ import { Article } from 'src/app/interfaces/article';
 
 import { LoginService } from '../../services/login.service'
 
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
 
 
 @Component({
