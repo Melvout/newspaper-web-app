@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { Article } from 'src/app/interfaces/article';
+import { Editor } from 'src/app/interfaces/editor';
 
 import { LoginService } from '../../services/login.service'
 
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
+
 
 
 @Component({
@@ -19,11 +21,13 @@ export class ArticleDetailsComponent implements OnInit
   articleId: number;
   article: Article;
   imgUrl: string = "https://picsum.photos/1140/640?random=1";
+  editorsList: Editor[];
 
   constructor(private newsService: NewsService, private loginService: LoginService, private location: Location, private route: ActivatedRoute){ }
 
   ngOnInit(): void
   {
+    this.editorsList = [ {id_editor: 23, name:"Octavio CRUZ"}, {id_editor: 24, name: "Gokul SREENIVAS"}, {id_editor: 25, name:"Melvin NAMONT"}, {id_editor: 10, name:"Raul ALONSO"}];
     this.route.paramMap.subscribe(params =>
     {
       this.articleId = parseInt(params.get('id'), 10);
@@ -56,5 +60,15 @@ export class ArticleDetailsComponent implements OnInit
   isLogged(): boolean
   {
     return this.loginService.isLogged();
+  }
+
+  getEditorName(id_user: number): string
+  {
+    let editor = this.editorsList.find(i => i.id_editor == id_user);
+    if(editor != undefined )
+    {
+      return editor.name;
+    }
+    return "Unknown author";
   }
 }
