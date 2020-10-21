@@ -150,6 +150,10 @@ p {
   margin-bottom: 2.3529rem;
 }
 
+.padding-bottom-sm {
+  padding-bottom: 2.3529rem;
+}
+
 .margin-bottom-xs {
   margin-bottom: 1rem;
 }

@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row margin-top-lg">
     <div class="col-xl-8 col-lg-6 mx-auto">
+      <a (click)="goBack()" role="button" class="d-block margin-bottom-xs">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back
+      </a>
       <h2 *ngIf="articleId == 0">Create A New Article</h2>
       <h2 *ngIf="articleId != 0">Edit Article</h2>
       <p>Fields mark with * are mandatory.</p>
@@ -63,7 +71,7 @@
             <label for="image">Image*</label>
             <div class="input-group mb-3">
               <div class="custom-file">
-                <input  class="custom-file-input"  
+                <input  class="custom-file-input"
                         name="simage"
                         type="file"
                         #simage = "ngModel"
@@ -86,9 +94,6 @@
           </div>
 
           <div class="text-right">
-            <a class="btn btn-secondary btn-sm"(click)="goBack()">
-              Cancel
-            </a>
             <button *ngIf="articleId == 0" class="button" type="submit" class="btn btn-primary btn-sm btn-block-margin" [disabled]="(!editionForm.valid || !isImageSaved )">Create article</button>
             <button *ngIf="articleId != 0" class="button" type="submit" class="btn btn-primary btn-sm btn-block-margin" [disabled]="(!editionForm.valid || !isImageSaved )">Update article</button>
           </div>
