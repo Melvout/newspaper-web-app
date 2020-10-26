@@ -23,6 +23,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CategoryFilterPipe } from './pipes/category-filter.pipe';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { CategoryFilterPipe } from './pipes/category-filter.pipe';
     RouterModule,
     AngularEditorModule,
     FlexLayoutModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],
