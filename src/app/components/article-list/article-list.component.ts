@@ -8,6 +8,11 @@ import { Article } from '../../interfaces/article';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
+declare var $: any;
+
+
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
@@ -20,8 +25,10 @@ export class ArticleListComponent implements OnInit
   categoryFilter: string;
   termsFilter: string;
   user: User;
+  closeResult: string;
+  isDeleted: boolean;
 
-  constructor(private newsService: NewsService, private loginService: LoginService, private router: Router){ }
+  constructor(private newsService: NewsService, private loginService: LoginService, private router: Router, private modalService: NgbModal){ }
 
   ngOnInit(): void
   {
@@ -40,6 +47,9 @@ export class ArticleListComponent implements OnInit
     {
       this.user = userStatus;
     })
+
+    $('.alert').alert()
+
   }
 
   /* Function to initialize the lists of all the articles from the API */
@@ -84,12 +94,13 @@ export class ArticleListComponent implements OnInit
     () =>
     {
       console.log("Article deleted");
+      this.isDeleted = true;
       this.getArticles();
     });
   }
 
   /* Function to navigate the a specific article details */
-  viewArticle(articleID: number): void 
+  viewArticle(articleID: number): void
   {
     this.router.navigate(['/article-details/' + this.newsList[articleID].id]);
   }
@@ -97,5 +108,23 @@ export class ArticleListComponent implements OnInit
   editArticle(articleID: number): void
   {
     this.router.navigate(['/article-edition/' + this.newsList[articleID].id]);
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 }
