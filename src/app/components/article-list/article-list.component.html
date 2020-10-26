@@ -30,9 +30,10 @@
         <a (click)="viewArticle(i)" role="button">
           <h4 class="card-title">{{ news.title }}</h4>
         </a>
-        <p class="card-abstract">
+        <div [innerHTML]="news.abstract"></div>
+        <!-- <p class="card-abstract">
           {{ news.abstract | ellipsis }}
-        </p>
+        </p>-->
       </div>
       <div class="card-footer text-right" *ngIf="user">
         <a class="card-edit d-inline p-2" role="button" (click)="editArticle(i)">
