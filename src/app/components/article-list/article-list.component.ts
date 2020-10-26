@@ -10,6 +10,8 @@ import { User } from 'src/app/interfaces/user';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
+declare var $: any;
+
 
 @Component({
   selector: 'app-article-list',
@@ -24,6 +26,7 @@ export class ArticleListComponent implements OnInit
   termsFilter: string;
   user: User;
   closeResult: string;
+  isDeleted: boolean;
 
   constructor(private newsService: NewsService, private loginService: LoginService, private router: Router, private modalService: NgbModal){ }
 
@@ -44,6 +47,8 @@ export class ArticleListComponent implements OnInit
     {
       this.user = userStatus;
     })
+
+    $('.alert').alert()
 
   }
 
@@ -89,6 +94,7 @@ export class ArticleListComponent implements OnInit
     () =>
     {
       console.log("Article deleted");
+      this.isDeleted = true;
       this.getArticles();
     });
   }
