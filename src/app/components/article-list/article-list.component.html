@@ -30,7 +30,8 @@
         <a (click)="viewArticle(i)" role="button">
           <h4 class="card-title">{{ news.title }}</h4>
         </a>
-        <div [innerHTML]="news.abstract"></div>
+        <div class="subtitle">{{ news.subtitle }}</div>
+        <div class="abstract" [innerHTML]="news.abstract"></div>
         <!-- <p class="card-abstract">
           {{ news.abstract | ellipsis }}
         </p>-->

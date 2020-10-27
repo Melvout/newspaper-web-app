@@ -4,3 +4,13 @@
     max-height: 190px; 
     overflow: hidden;
 }
+
+.subtitle
+{
+    margin-bottom: 10px;
+}
+
+.abstract
+{
+    color: gray;
+}
