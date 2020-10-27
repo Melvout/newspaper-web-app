@@ -11,4 +11,4 @@ To start the project :
 
 - Clone this repo
 - Use : *npm install* in the root folder
-- Then : *npm serve* in the root folder
+- Then : *ng serve* in the root folder
