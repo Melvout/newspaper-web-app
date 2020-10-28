@@ -2,9 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { LoginService } from '../../services/login.service'
 import { NewsService } from '../../services/news.service';
-
 import { FormBuilder, FormGroup } from '@angular/forms';
-
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -21,12 +19,8 @@ export class LoginComponent implements OnInit
   userData: {username: string, password: string};
   user: User;
   correctCredentials: boolean;
-  //loginForm: FormGroup;
-
-  constructor(private loginService: LoginService, private formBuilder: FormBuilder, private newsService: NewsService, private router: Router)
-  {
-
-  }
+ 
+  constructor(private loginService: LoginService, private formBuilder: FormBuilder, private newsService: NewsService, private router: Router){}
 
   ngOnInit(): void
   {
@@ -54,18 +48,6 @@ export class LoginComponent implements OnInit
       this.router.navigate(['/articles-list']); // Navigate to the articles-list
     });
   }
-
-  /*login(name: string, pwd: string, loginForm: NgForm)
-  {
-    this.loginService.login(name, pwd).subscribe( user =>
-    {
-      console.log(user);
-      this.user = user;
-      this.newsService.setUserApiKey(this.loginService.getUser().apikey); // Set the apikey for the current user
-      this.router.navigate(['/articles-list']);
-    });
-  }*/
-
 
   /* Function to know if the user is logged
     If the user is logged : return true
