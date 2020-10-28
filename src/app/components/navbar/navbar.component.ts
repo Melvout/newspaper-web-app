@@ -52,12 +52,14 @@ export class NavbarComponent implements OnInit
     this.newsService.setAnonymousApiKey(); // Restoring anonymous apikey
   }
 
+  /* Function to set the category filter */
   setCategoryFilter(categoryFilter: string): void
   {
     this.currentFilter = categoryFilter;
     this.newsService.setCategoryFilter(categoryFilter);
   }
 
+  /* Function to set the term filter */
   setTermsFilter(event): void
   {
     this.newsService.setTermsFilter(event.target.value);
