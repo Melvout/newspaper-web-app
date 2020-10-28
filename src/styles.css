@@ -115,12 +115,12 @@ p {
   text-transform: uppercase;
   border-radius: 0.7647rem;
   font-weight: 700;
-  padding: 0.7647rem 2rem;
+  padding: 0.7647rem 1rem;
 }
 
 .btn-sm {
   border-radius: 0.4117rem;
-  padding: 0.3017rem 0.7647rem;
+  padding: 0.3117rem 0.7647rem;
 }
 
 .btn-primary {
@@ -249,10 +249,10 @@ label {
 
 /* Breakpoints */
 
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (min-width: 320px) and (max-width: 767.98px) {
   h1 {
     font-size: 2.157rem;
-    margin-top: 17px;
+    margin-top: 5px;
   }
  }
 
