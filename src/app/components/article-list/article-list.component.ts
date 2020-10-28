@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
-
-import { ThrowStmt } from '@angular/compiler';
-
 import { LoginService } from '../../services/login.service'
 import { Article } from '../../interfaces/article';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
-
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 declare var $: any;
@@ -93,9 +89,9 @@ export class ArticleListComponent implements OnInit
     },
     () =>
     {
-      console.log("Article deleted");
       this.isDeleted = true;
       this.getArticles();
+      window.scrollTo(0, 0);
     });
   }
 
@@ -105,12 +101,15 @@ export class ArticleListComponent implements OnInit
     this.router.navigate(['/article-details/' + this.newsList[articleID].id]);
   }
 
+  /* Function to navigate to the edition of a specific article */
   editArticle(articleID: number): void
   {
     this.router.navigate(['/article-edition/' + this.newsList[articleID].id]);
   }
 
-  open(content) {
+  /* Function to open modal */
+  open(content) 
+  {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -118,6 +117,7 @@ export class ArticleListComponent implements OnInit
     });
   }
 
+  /* Function to dismass the modal */
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
