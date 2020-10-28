@@ -9,7 +9,6 @@ import { Article } from '../../interfaces/article';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-article-edition',
