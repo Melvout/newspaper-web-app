@@ -12,7 +12,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { EllipsisPipe } from './pipes/ellipsis.pipe';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CategoryFilterPipe } from './pipes/category-filter.pipe';
@@ -27,7 +26,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ArticleListComponent,
     NavbarComponent,
     LoginComponent,
-    EllipsisPipe,
     CategoryFilterPipe,
   ],
   imports: [
