@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
 import { LoginService } from '../../services/login.service'
 import { NewsService } from '../../services/news.service';
-
 import { Article } from '../../interfaces/article';
-
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -28,7 +25,7 @@ export class ArticleEditionComponent implements OnInit
   articleCreated: boolean;
   articleUpdated: boolean;
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private newsService: NewsService, private location: Location, private route: ActivatedRoute, private router: Router){ }
+  constructor(private loginService: LoginService, private newsService: NewsService, private location: Location, private route: ActivatedRoute, private router: Router){ }
 
   ngOnInit(): void 
   {
@@ -179,5 +176,4 @@ export class ArticleEditionComponent implements OnInit
 
     return dd + '-' + mm + '-' + yyyy + " " + hour + ":" + minutes + ":" + seconds;
   }
-
 }
