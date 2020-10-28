@@ -24,7 +24,6 @@ export class NewsService
 
   // Set the corresponding APIKEY accordig to the received by email
   private APIKEY: string;
-  //private APIKEY_ANON = 'GROMANAPIKEY99';
   private APIKEY_ANON = 'DEV_TEAM_1331';
 
   private httpOptions = 
@@ -98,7 +97,6 @@ export class NewsService
     console.log('Requesting article id=' + id);
     const url = `${this.articleUrl}/${id}`;
     return this.http.get<Article>(url, this.httpOptions);
-
   }
 
   updateArticle(article: Article): Observable<Article> 
@@ -114,13 +112,14 @@ export class NewsService
     return this.http.post<Article>(this.articleUrl, article, this.httpOptions);
   }
 
+  /* Method to emit event when category filter changes */
   setCategoryFilter(categoryFilter: string): void
   {
     this.categoryFilter = categoryFilter;
-    console.log(">>>" + categoryFilter);
     this.changeCategoryFilter.emit(this.categoryFilter);
   }
 
+  /* Method to emit event when term filter changes */
   setTermsFilter(termsFilter: string): void
   {
     this.changeTermsFilter.emit(termsFilter);
