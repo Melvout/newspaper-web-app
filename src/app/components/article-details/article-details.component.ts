@@ -27,7 +27,7 @@ export class ArticleDetailsComponent implements OnInit
 
   ngOnInit(): void
   {
-    this.editorsList = [ {id_editor: 23, name:"Gokul SREENIVAS"}, {id_editor: 24, name: "Octavio CRUZ"}, {id_editor: 25, name:"Melvin NAMONT"}, {id_editor: 10, name:"Raul ALONSO"}];
+    this.editorsList = [ {id_editor: 23, name:"Octavio CRUZ"}, {id_editor: 24, name: "Gokul SREENIVAS"}, {id_editor: 25, name:"Melvin NAMONT"}, {id_editor: 10, name:"Raul ALONSO"}];
     this.route.paramMap.subscribe(params =>
     {
       this.articleId = parseInt(params.get('id'), 10);
