@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { Article } from 'src/app/interfaces/article';
 import { Editor } from 'src/app/interfaces/editor';
-
 import { LoginService } from '../../services/login.service'
-
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Location } from '@angular/common';
-import { Observable } from 'rxjs';
+
 
 
 
@@ -28,6 +26,7 @@ export class ArticleDetailsComponent implements OnInit
   ngOnInit(): void
   {
     this.editorsList = [ {id_editor: 23, name:"Octavio CRUZ"}, {id_editor: 24, name: "Gokul SREENIVAS"}, {id_editor: 25, name:"Melvin NAMONT"}, {id_editor: 10, name:"Raul ALONSO"}];
+
     this.route.paramMap.subscribe(params =>
     {
       this.articleId = parseInt(params.get('id'), 10);
@@ -36,6 +35,7 @@ export class ArticleDetailsComponent implements OnInit
     });
   }
 
+  /* Function to retrieve a specific article from the service */
   getArticle(id: number)
   {
     this.newsService.getArticle(id).subscribe(article => 
@@ -44,12 +44,12 @@ export class ArticleDetailsComponent implements OnInit
     },
     err =>
     {
-      console.log("An error has ocurred : " + err.statusText); // CHANGES NEEDED
+      console.log("An error has ocurred : " + err.statusText);
       this.article = null;
     },
     () =>
     {
-      console.log("Article got !"); // CHANGES NEEDED
+      console.log("Article got !");
     });
   }
 
@@ -62,6 +62,7 @@ export class ArticleDetailsComponent implements OnInit
     return this.loginService.isLogged();
   }
 
+  /* Function to get the name of an editor using his ID */
   getEditorName(id_user: number): string
   {
     let editor = this.editorsList.find(i => i.id_editor == id_user);
